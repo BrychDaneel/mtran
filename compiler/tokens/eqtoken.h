@@ -9,6 +9,10 @@
 class EQToken : public Token
 {
 public:
+    enum SubType{ce, cne, ca, cb, cbe, cae};
+private:
+    SubType subType;
+public:
     EQToken(const std::string lexem);
 
     static const int TYPE;

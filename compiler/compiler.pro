@@ -48,7 +48,13 @@ SOURCES += main.cpp \
     tokens/stringtoken.cpp \
     tokens/chartoken.cpp \
     keywordsfactory.cpp \
-    tokens/keywordtoken.cpp
+    tokens/keywordtoken.cpp \
+    syntaxanalizer.cpp \
+    node.cpp \
+    basenode.cpp \
+    rule.cpp \
+    baserule.cpp \
+    rules/terminalrule.cpp
 
 HEADERS += \
     codesource.h \
@@ -84,4 +90,10 @@ HEADERS += \
     tokens/stringtoken.h \
     tokens/chartoken.h \
     keywordsfactory.h \
-    tokens/keywordtoken.h
+    tokens/keywordtoken.h \
+    syntaxanalizer.h \
+    node.h \
+    basenode.h \
+    rule.h \
+    baserule.h \
+    rules/terminalrule.h

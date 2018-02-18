@@ -8,6 +8,7 @@
 
 class BinToken : public Token
 {
+    enum BinType{_and, _xor, _or};
 public:
     BinToken(const std::string lexem);
 

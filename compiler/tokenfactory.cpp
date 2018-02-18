@@ -74,7 +74,7 @@ TokenFactory::TokenFactory()
 
     reg(AdressToken::REGEX, &AdressToken::create);
     reg(AssignToken::REGEX, &AssignToken::create);
-    reg(BinToken::REGEX, &BinToken::create);
+    //reg(BinToken::REGEX, &BinToken::create);
     reg(ColonToken::REGEX, &ColonToken::create);
     reg(ComaToken::REGEX, &ComaToken::create);
     reg(DotDotToken::REGEX, &DotDotToken::create);

@@ -9,6 +9,10 @@
 class FactToken : public Token
 {
 public:
+    enum SubType{div, mult};
+private:
+    SubType subType;
+public:
     FactToken(const std::string lexem);
 
     static const int TYPE;

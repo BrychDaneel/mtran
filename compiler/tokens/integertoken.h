@@ -8,6 +8,8 @@
 
 class IntegerToken : public Token
 {
+    int value;
+
 public:
     IntegerToken(const std::string lexem);
 
@@ -20,6 +22,8 @@ public:
     int getType() {return TYPE;}
     const std::string getRegex() {return REGEX;}
     const std::string getName() {return NAME;}
+
+    int getValue();
 };
 
 #endif // INTEGERTOKEN_H

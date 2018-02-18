@@ -9,6 +9,13 @@
 class SumToken : public Token
 {
 public:
+    enum SubType {plus, minus};
+
+private:
+    SubType subType;
+
+public:
+
     SumToken(const std::string lexem);
 
     static const int TYPE;
@@ -20,6 +27,8 @@ public:
     int getType() {return TYPE;}
     const std::string getRegex() {return REGEX;}
     const std::string getName() {return NAME;}
+
+    SubType getSubType();
 };
 
 #endif // SUMTOKEN_H

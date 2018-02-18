@@ -8,6 +8,7 @@
 
 class RealToken : public Token
 {
+    double value;
 public:
     RealToken(const std::string lexem);
 
@@ -20,6 +21,8 @@ public:
     int getType() {return TYPE;}
     const std::string getRegex() {return REGEX;}
     const std::string getName() {return NAME;}
+
+    double getValue();
 };
 
 #endif // REALTOKEN_H

@@ -8,6 +8,7 @@
 
 class CharToken : public Token
 {
+    char chr;
 public:
     CharToken(const std::string lexem);
 
@@ -20,6 +21,8 @@ public:
     int getType() {return TYPE;}
     const std::string getRegex() {return REGEX;}
     const std::string getName() {return NAME;}
+
+    char getValue();
 };
 
 #endif // CHARTOKEN_H
