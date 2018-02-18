@@ -1,11 +1,14 @@
 #ifndef FACTENDRULE_H
 #define FACTENDRULE_H
 
+#include <baserule.h>
 
-class FactEndRule
+class FactEndRule : public BaseRule
 {
-public:
+    static FactEndRule* instance;
     FactEndRule();
+public:
+    static FactEndRule* getInstance();
 };
 
 #endif // FACTENDRULE_H

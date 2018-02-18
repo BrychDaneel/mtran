@@ -8,7 +8,7 @@
 
 class BaseRule : public Rule
 {
-private:
+protected:
     BaseRule();
     static Rule* instance;
     std::vector<std::vector<Rule*> > vars;
@@ -26,7 +26,6 @@ private:
     int buildLevel = 0;
 
 public:
-    void addVar(std::vector<Rule*> var);
     static Rule* getInstance();
     virtual Node* getEmptyNode(int way);
     std::set<int> getFirst();

@@ -2,10 +2,14 @@
 #define EXPRSTARTRULE_H
 
 
-class ExprStartRule
+#include <baserule.h>
+
+class ExprStartRule : public BaseRule
 {
-public:
+    static ExprStartRule* instance;
     ExprStartRule();
+public:
+    static ExprStartRule* getInstance();
 };
 
 #endif // EXPRSTARTRULE_H

@@ -1,11 +1,14 @@
 #ifndef INDEXRULE_H
 #define INDEXRULE_H
 
+#include <baserule.h>
 
-class IndexRule
+class IndexRule : public BaseRule
 {
-public:
+    static IndexRule* instance;
     IndexRule();
+public:
+    static IndexRule* getInstance();
 };
 
 #endif // INDEXRULE_H

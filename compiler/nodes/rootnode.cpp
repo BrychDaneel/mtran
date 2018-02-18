@@ -2,5 +2,4 @@
 
 RootNode::RootNode()
 {
-
 }

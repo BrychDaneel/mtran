@@ -1,11 +1,14 @@
 #ifndef OPERANDRULE_H
 #define OPERANDRULE_H
 
+#include <baserule.h>
 
-class OperandRule
+class OperandRule : public BaseRule
 {
-public:
+    static OperandRule* instance;
     OperandRule();
+public:
+    static OperandRule* getInstance();
 };
 
 #endif // OPERANDRULE_H

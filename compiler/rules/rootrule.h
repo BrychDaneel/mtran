@@ -2,10 +2,16 @@
 #define ROOTRULE_H
 
 
-class RootRule
+#include <baserule.h>
+#include <nodes/rootnode.h>
+
+class RootRule : public BaseRule
 {
-public:
+    static RootRule* instance;
     RootRule();
+public:
+    static RootRule* getInstance();
+    virtual Node* getEmptyNode(int way) {return new RootNode();}
 };
 
 #endif // ROOTRULE_H

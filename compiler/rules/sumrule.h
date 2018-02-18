@@ -1,11 +1,14 @@
 #ifndef SUMRULE_H
 #define SUMRULE_H
 
+#include <baserule.h>
 
-class SumRule
+class SumRule : public BaseRule
 {
-public:
+    static SumRule* instance;
     SumRule();
+public:
+    static SumRule* getInstance();
 };
 
 #endif // SUMRULE_H

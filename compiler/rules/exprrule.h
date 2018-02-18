@@ -1,11 +1,15 @@
 #ifndef EXPRRULE_H
 #define EXPRRULE_H
 
+#include <baserule.h>
 
-class ExprRule
+
+class ExprRule : public BaseRule
 {
-public:
+    static ExprRule* instance;
     ExprRule();
+public:
+    static ExprRule* getInstance();
 };
 
 #endif // EXPRRULE_H

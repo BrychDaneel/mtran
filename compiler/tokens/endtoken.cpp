@@ -8,5 +8,5 @@ const std::string EndToken::NAME = "$";
 
 EndToken::EndToken()
 {
-    this->lexem = lexem;
+    this->lexem = EndToken::NAME;
 }

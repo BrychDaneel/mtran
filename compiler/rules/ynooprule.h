@@ -2,10 +2,14 @@
 #define YNOOPRULE_H
 
 
-class YnoOpRule
+#include <baserule.h>
+
+class YnoOpRule : public BaseRule
 {
-public:
+    static YnoOpRule* instance;
     YnoOpRule();
+public:
+    static YnoOpRule* getInstance();
 };
 
 #endif // YNOOPRULE_H

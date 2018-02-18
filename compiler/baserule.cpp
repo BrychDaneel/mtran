@@ -12,11 +12,6 @@ BaseRule::BaseRule()
 
 }
 
-void BaseRule::addVar(std::vector<Rule *> var)
-{
-    vars.push_back(var);
-}
-
 Rule *BaseRule::getInstance()
 {
     if (instance == nullptr){
@@ -36,6 +31,9 @@ std::set<int> BaseRule::getFirst()
     }
 
     fistRecursion = true;
+
+    while (waysFirst.size() < vars.size())
+        waysFirst.push_back(std::set<int>());
 
     for (size_t way=0; way<vars.size(); way++){
         size_t i=0;
@@ -72,7 +70,7 @@ std::set<int> BaseRule::getFollow()
 {
     if (!isFollowCached){
         std::cerr << "RUNTIME ERROR: Gramatic is not builded" << std::endl;
-        return follow;
+        exit(1);
     }
 
     return follow;
@@ -80,6 +78,11 @@ std::set<int> BaseRule::getFollow()
 
 Node *BaseRule::parce(LexicalAnalizer *lex)
 {
+    if (!isFollowCached){
+        std::cerr << "RUNTIME ERROR: Gramatic is not builded" << std::endl;
+        exit(1);
+    }
+
     Token* token = lex->front();
     int term = token->getType();
 
@@ -117,14 +120,13 @@ void BaseRule::build(int level)
     isFollowCached = true;
 
     if (level==1 || !level){
-        if (level==buildLevel)
+        if (level==buildLevel && level)
             return;
         getFirst();
         buildLevel = 1;
         for (std::vector<Rule*>& way : vars)
             for (Rule* rule: way)
                 rule->build(1);
-        return;
     }
 
     if (level==2 || !level){

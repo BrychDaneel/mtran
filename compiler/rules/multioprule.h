@@ -1,11 +1,14 @@
 #ifndef MULTIOPRULE_H
 #define MULTIOPRULE_H
 
+#include <baserule.h>
 
-class MultiOpRule
+class MultiOpRule : public BaseRule
 {
-public:
+    static MultiOpRule* instance;
     MultiOpRule();
+public:
+    static MultiOpRule* getInstance();
 };
 
 #endif // MULTIOPRULE_H

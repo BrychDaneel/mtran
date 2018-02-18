@@ -54,7 +54,34 @@ SOURCES += main.cpp \
     basenode.cpp \
     rule.cpp \
     baserule.cpp \
-    rules/terminalrule.cpp
+    rules/terminalrule.cpp \
+    nodes/terminalnode.cpp \
+    nodes/rootnode.cpp \
+    rules/rootrule.cpp \
+    rules/literalrule.cpp \
+    rules/ynooprule.cpp \
+    rules/sumoprule.cpp \
+    rules/multioprule.cpp \
+    rules/varrule.cpp \
+    rules/varstartrule.cpp \
+    rules/varendrule.cpp \
+    rules/emptyrule.cpp \
+    rules/indexrule.cpp \
+    rules/callrule.cpp \
+    rules/paramsrule.cpp \
+    rules/paramsstartrule.cpp \
+    rules/paramsendrule.cpp \
+    rules/operandrule.cpp \
+    rules/factrule.cpp \
+    rules/factstartrule.cpp \
+    rules/factendrule.cpp \
+    rules/sumrule.cpp \
+    rules/sumstartrule.cpp \
+    rules/sumendrule.cpp \
+    rules/exprrule.cpp \
+    rules/exprstartrule.cpp \
+    rules/exprendrule.cpp \
+    nodes/emptynode.cpp
 
 HEADERS += \
     codesource.h \
@@ -96,4 +123,31 @@ HEADERS += \
     basenode.h \
     rule.h \
     baserule.h \
-    rules/terminalrule.h
+    rules/terminalrule.h \
+    nodes/terminalnode.h \
+    nodes/rootnode.h \
+    rules/rootrule.h \
+    rules/literalrule.h \
+    rules/ynooprule.h \
+    rules/sumoprule.h \
+    rules/multioprule.h \
+    rules/varrule.h \
+    rules/varstartrule.h \
+    rules/varendrule.h \
+    rules/emptyrule.h \
+    rules/indexrule.h \
+    rules/callrule.h \
+    rules/paramsrule.h \
+    rules/paramsstartrule.h \
+    rules/paramsendrule.h \
+    rules/operandrule.h \
+    rules/factrule.h \
+    rules/factstartrule.h \
+    rules/factendrule.h \
+    rules/sumrule.h \
+    rules/sumstartrule.h \
+    rules/sumendrule.h \
+    rules/exprrule.h \
+    rules/exprstartrule.h \
+    rules/exprendrule.h \
+    nodes/emptynode.h

@@ -2,10 +2,15 @@
 #define EXPRENDRULE_H
 
 
-class ExprEndRule
+#include <baserule.h>
+
+
+class ExprEndRule : public BaseRule
 {
-public:
+    static ExprEndRule* instance;
     ExprEndRule();
+public:
+    static ExprEndRule* getInstance();
 };
 
 #endif // EXPRENDRULE_H

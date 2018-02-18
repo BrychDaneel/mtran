@@ -2,10 +2,15 @@
 #define PARAMSRULE_H
 
 
-class ParamsRule
+#include <baserule.h>
+
+
+class ParamsRule : public BaseRule
 {
-public:
+    static ParamsRule* instance;
     ParamsRule();
+public:
+    static ParamsRule* getInstance();
 };
 
 #endif // PARAMSRULE_H

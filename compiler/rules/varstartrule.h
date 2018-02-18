@@ -1,11 +1,14 @@
 #ifndef VARSTARTRULE_H
 #define VARSTARTRULE_H
 
+#include <baserule.h>
 
-class VarStartRule
+class VarStartRule : public BaseRule
 {
-public:
+    static VarStartRule* instance;
     VarStartRule();
+public:
+    static VarStartRule* getInstance();
 };
 
 #endif // VARSTARTRULE_H

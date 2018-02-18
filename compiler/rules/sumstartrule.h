@@ -2,10 +2,15 @@
 #define SUMSTARTRULE_H
 
 
-class SumStartRule
+#include <baserule.h>
+
+
+class SumStartRule : public BaseRule
 {
-public:
+    static SumStartRule* instance;
     SumStartRule();
+public:
+    static SumStartRule* getInstance();
 };
 
 #endif // SUMSTARTRULE_H

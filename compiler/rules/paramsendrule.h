@@ -1,11 +1,14 @@
 #ifndef PARAMSENDRULE_H
 #define PARAMSENDRULE_H
 
+#include <baserule.h>
 
-class ParamsEndRule
+class ParamsEndRule : public BaseRule
 {
-public:
+    static ParamsEndRule* instance;
     ParamsEndRule();
+public:
+    static ParamsEndRule* getInstance();
 };
 
 #endif // PARAMSENDRULE_H

@@ -1,11 +1,15 @@
 #ifndef VARRULE_H
 #define VARRULE_H
 
+#include <baserule.h>
 
-class VarRule
+
+class VarRule : public BaseRule
 {
-public:
+    static VarRule* instance;
     VarRule();
+public:
+    static VarRule* getInstance();
 };
 
 #endif // VARRULE_H
