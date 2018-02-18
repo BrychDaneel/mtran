@@ -81,7 +81,10 @@ SOURCES += main.cpp \
     rules/exprrule.cpp \
     rules/exprstartrule.cpp \
     rules/exprendrule.cpp \
-    nodes/emptynode.cpp
+    nodes/emptynode.cpp \
+    rules/adressrule.cpp \
+    rules/adressendrule.cpp \
+    rules/assignrule.cpp
 
 HEADERS += \
     codesource.h \
@@ -150,4 +153,7 @@ HEADERS += \
     rules/exprrule.h \
     rules/exprstartrule.h \
     rules/exprendrule.h \
-    nodes/emptynode.h
+    nodes/emptynode.h \
+    rules/adressrule.h \
+    rules/adressendrule.h \
+    rules/assignrule.h

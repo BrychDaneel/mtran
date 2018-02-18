@@ -1,7 +1,7 @@
 #include "exprendrule.h"
 
 #include <rules/sumrule.h>
-#include <rules/sumoprule.h>
+#include <rules/terminalrule.h>
 #include <tokens/eqtoken.h>
 #include <rules/emptyrule.h>
 
@@ -15,7 +15,7 @@ void ExprEndRule::setup()
     vars.push_back(var);
 
     var.clear();
-    var.push_back(SumOpRule::getInstance());
+    var.push_back(TerminalRule::getInstance(EQToken::TYPE));
     var.push_back(SumRule::getInstance());
     vars.push_back(var);
 }

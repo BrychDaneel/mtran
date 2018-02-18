@@ -1,7 +1,7 @@
 #include "stringtoken.h"
 
 const int StringToken::TYPE = 402;
-const std::string StringToken::REGEX = "'.{2,}'" ;
+const std::string StringToken::REGEX = "'..+?'" ;
 const std::string StringToken::NAME = "String";
 
 

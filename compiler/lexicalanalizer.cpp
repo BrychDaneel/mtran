@@ -8,7 +8,10 @@ LexicalAnalizer::LexicalAnalizer(const std::string filename)
     :src(filename)
 {
     strings = src.full();
-    current = tokenFactory.getToken(strings);
+    do
+        current = tokenFactory.getToken(strings);
+    while (current->getType() == SpaceToken::TYPE || current->getType() == CommentToken::TYPE);
+
 }
 
 

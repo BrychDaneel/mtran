@@ -45,6 +45,7 @@ std::set<int> BaseRule::getFirst()
                     hasEmpty = true;
                 else
                     waysFirst[way].insert(f);
+            i++;
          }
 
         if  (i == vars[way].size() && hasEmpty){
@@ -87,15 +88,15 @@ Node *BaseRule::parce(LexicalAnalizer *lex)
     int term = token->getType();
 
     int way = -1;
-    if (emptyWay > -1 && follow.find(term) != follow.end())
-        way = emptyWay;
+    for (size_t i=0; i<vars.size(); i++)
+        if (waysFirst[i].find(term) != waysFirst[i].end()){
+            way = i;
+            break;
+        }
 
     if (way == -1)
-        for (size_t i=0; i<vars.size(); i++)
-            if (waysFirst[i].find(term) != waysFirst[i].end()){
-                way = i;
-                break;
-            }
+        if (emptyWay > -1 && follow.find(term) != follow.end())
+            way = emptyWay;
 
     if (way == -1){
         std::cerr << "COMPILATION ERROR: Invalid token" << std::endl;
@@ -164,17 +165,25 @@ void BaseRule::build(int level)
             }
         }
 
-        for (Rule* rule : modyfy)
-            rule->build(3);
+        int old_level = buildLevel;
+        buildLevel = 3;
+
+        if (old_level == 2)
+            for (std::vector<Rule*>& way : vars)
+                for (Rule* rule: way)
+                    rule->build(3);
+        else
+            for (Rule* rule : modyfy)
+                rule->build(3);
     }
 }
 
 bool BaseRule::addFollow(int term)
 {
-    if (emptyWay>-1 && first.find(term) != first.end()){
+  /*  if (emptyWay>-1 && first.find(term) != first.end()){
         std::cerr << "GRAMATIC ERROR: First Follow collision" << std::endl;
         exit(1);
-    }
+    }*/
 
     if (follow.find(term) != follow.end())
         return false;
