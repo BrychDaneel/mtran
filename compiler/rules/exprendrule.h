@@ -8,7 +8,7 @@
 class ExprEndRule : public BaseRule
 {
     static ExprEndRule* instance;
-    ExprEndRule();
+    void setup();
 public:
     static ExprEndRule* getInstance();
 };

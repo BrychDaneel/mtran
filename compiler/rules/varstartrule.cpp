@@ -6,7 +6,7 @@
 VarStartRule* VarStartRule::instance;
 
 
-VarStartRule::VarStartRule()
+void VarStartRule::setup()
 {
     std::vector<Rule*> var;
     var.push_back(TerminalRule::getInstance(IdToken::TYPE));
@@ -17,6 +17,7 @@ VarStartRule *VarStartRule::getInstance()
 {
     if (instance == nullptr){
         instance = new VarStartRule;
+        instance->setup();
     }
     return instance;
 }

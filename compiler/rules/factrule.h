@@ -6,7 +6,7 @@
 class FactRule : public BaseRule
 {
     static FactRule* instance;
-    FactRule();
+    void setup();
 public:
     static FactRule* getInstance();
 };

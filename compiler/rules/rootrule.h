@@ -8,7 +8,7 @@
 class RootRule : public BaseRule
 {
     static RootRule* instance;
-    RootRule();
+    void setup();
 public:
     static RootRule* getInstance();
     virtual Node* getEmptyNode(int way) {return new RootNode();}

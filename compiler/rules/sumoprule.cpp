@@ -7,7 +7,7 @@
 SumOpRule* SumOpRule::instance;
 
 
-SumOpRule::SumOpRule()
+void SumOpRule::setup()
 {
     std::vector<Rule*> var;
     var.push_back(TerminalRule::getInstance(SumToken::TYPE));
@@ -30,6 +30,7 @@ SumOpRule *SumOpRule::getInstance()
 {
     if (instance == nullptr){
         instance = new SumOpRule;
+        instance->setup();
     }
     return instance;
 }

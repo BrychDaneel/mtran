@@ -6,7 +6,7 @@
 class ParamsEndRule : public BaseRule
 {
     static ParamsEndRule* instance;
-    ParamsEndRule();
+    void setup();
 public:
     static ParamsEndRule* getInstance();
 };

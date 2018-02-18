@@ -8,7 +8,7 @@
 IndexRule* IndexRule::instance;
 
 
-IndexRule::IndexRule()
+void IndexRule::setup()
 {
     std::vector<Rule*> var;
     var.push_back(TerminalRule::getInstance(LeftSquarToken::TYPE));
@@ -21,6 +21,7 @@ IndexRule *IndexRule::getInstance()
 {
     if (instance == nullptr){
         instance = new IndexRule;
+        instance->setup();
     }
     return instance;
 }

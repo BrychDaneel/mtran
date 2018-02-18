@@ -5,7 +5,7 @@
 EmptyRule* EmptyRule::instance;
 
 
-EmptyRule::EmptyRule()
+void EmptyRule::setup()
 {
     first.insert(EmptyToken::TYPE);
 }
@@ -14,6 +14,7 @@ EmptyRule *EmptyRule::getInstance()
 {
     if (instance == nullptr){
         instance = new EmptyRule;
+        instance->setup();
     }
     return instance;
 }

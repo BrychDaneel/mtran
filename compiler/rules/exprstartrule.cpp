@@ -5,7 +5,7 @@
 ExprStartRule* ExprStartRule::instance;
 
 
-ExprStartRule::ExprStartRule()
+void ExprStartRule::setup()
 {
     std::vector<Rule*> var;
     var.push_back(SumRule::getInstance());
@@ -16,6 +16,7 @@ ExprStartRule *ExprStartRule::getInstance()
 {
     if (instance == nullptr){
         instance = new ExprStartRule;
+        instance->setup();
     }
     return instance;
 }

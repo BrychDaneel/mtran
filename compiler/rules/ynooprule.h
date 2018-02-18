@@ -7,7 +7,7 @@
 class YnoOpRule : public BaseRule
 {
     static YnoOpRule* instance;
-    YnoOpRule();
+    void setup();
 public:
     static YnoOpRule* getInstance();
 };

@@ -6,7 +6,7 @@
 FactRule* FactRule::instance;
 
 
-FactRule::FactRule()
+void FactRule::setup()
 {
     std::vector<Rule*> var;
     var.push_back(FactStartRule::getInstance());
@@ -18,6 +18,7 @@ FactRule *FactRule::getInstance()
 {
     if (instance == nullptr){
         instance = new FactRule;
+        instance->setup();
     }
     return instance;
 }

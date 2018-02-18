@@ -8,7 +8,7 @@
 class ParamsRule : public BaseRule
 {
     static ParamsRule* instance;
-    ParamsRule();
+    void setup();
 public:
     static ParamsRule* getInstance();
 };

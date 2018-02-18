@@ -9,7 +9,7 @@
 class EmptyRule : public BaseRule
 {
     static EmptyRule* instance;
-    EmptyRule();
+    void setup();
     std::set<int> first;
     std::set<int> follow;
 public:

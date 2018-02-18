@@ -7,7 +7,7 @@
 class ExprRule : public BaseRule
 {
     static ExprRule* instance;
-    ExprRule();
+    void setup();
 public:
     static ExprRule* getInstance();
 };

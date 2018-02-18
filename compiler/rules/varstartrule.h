@@ -6,7 +6,7 @@
 class VarStartRule : public BaseRule
 {
     static VarStartRule* instance;
-    VarStartRule();
+    void setup();
 public:
     static VarStartRule* getInstance();
 };

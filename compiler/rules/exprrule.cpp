@@ -6,7 +6,7 @@
 ExprRule* ExprRule::instance;
 
 
-ExprRule::ExprRule()
+void ExprRule::setup()
 {
     std::vector<Rule*> var;
     var.push_back(ExprStartRule::getInstance());
@@ -18,6 +18,7 @@ ExprRule *ExprRule::getInstance()
 {
     if (instance == nullptr){
         instance = new ExprRule;
+        instance->setup();
     }
     return instance;
 }

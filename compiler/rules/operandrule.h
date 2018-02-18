@@ -6,7 +6,7 @@
 class OperandRule : public BaseRule
 {
     static OperandRule* instance;
-    OperandRule();
+    void setup();
 public:
     static OperandRule* getInstance();
 };

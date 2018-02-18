@@ -9,7 +9,7 @@
 CallRule* CallRule::instance;
 
 
-CallRule::CallRule()
+void CallRule::setup()
 {
     std::vector<Rule*> var;
     var.push_back(TerminalRule::getInstance(LeftBracketToken::TYPE));
@@ -22,6 +22,7 @@ CallRule *CallRule::getInstance()
 {
     if (instance == nullptr){
         instance = new CallRule;
+        instance->setup();
     }
     return instance;
 }

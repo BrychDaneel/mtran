@@ -6,7 +6,7 @@
 ParamsRule* ParamsRule::instance;
 
 
-ParamsRule::ParamsRule()
+void ParamsRule::setup()
 {
     std::vector<Rule*> var;
     var.push_back(ParamsStartRule::getInstance());
@@ -18,6 +18,7 @@ ParamsRule *ParamsRule::getInstance()
 {
     if (instance == nullptr){
         instance = new ParamsRule;
+        instance->setup();
     }
     return instance;
 }

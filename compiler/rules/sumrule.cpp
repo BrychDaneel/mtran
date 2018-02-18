@@ -7,7 +7,7 @@
 SumRule* SumRule::instance;
 
 
-SumRule::SumRule()
+void SumRule::setup()
 {
     std::vector<Rule*> var;
     var.push_back(SumStartRule::getInstance());
@@ -19,6 +19,7 @@ SumRule *SumRule::getInstance()
 {
     if (instance == nullptr){
         instance = new SumRule;
+        instance->setup();
     }
     return instance;
 }

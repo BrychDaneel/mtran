@@ -6,7 +6,7 @@
 OperandRule* OperandRule::instance;
 
 
-OperandRule::OperandRule()
+void OperandRule::setup()
 {
     std::vector<Rule*> var;
     var.push_back(YnoOpRule::getInstance());
@@ -22,6 +22,7 @@ OperandRule *OperandRule::getInstance()
 {
     if (instance == nullptr){
         instance = new OperandRule;
+        instance->setup();
     }
     return instance;
 }

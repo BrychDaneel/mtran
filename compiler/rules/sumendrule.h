@@ -8,7 +8,7 @@
 class SumEndRule : public BaseRule
 {
     static SumEndRule* instance;
-    SumEndRule();
+    void setup();
 public:
     static SumEndRule* getInstance();
 };

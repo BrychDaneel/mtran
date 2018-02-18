@@ -8,7 +8,7 @@
 class SumStartRule : public BaseRule
 {
     static SumStartRule* instance;
-    SumStartRule();
+    void setup();
 public:
     static SumStartRule* getInstance();
 };

@@ -7,7 +7,7 @@
 class ParamsStartRule : public BaseRule
 {
     static ParamsStartRule* instance;
-    ParamsStartRule();
+    void setup();
 public:
     static ParamsStartRule* getInstance();
 };

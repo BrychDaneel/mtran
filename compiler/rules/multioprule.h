@@ -6,7 +6,7 @@
 class MultiOpRule : public BaseRule
 {
     static MultiOpRule* instance;
-    MultiOpRule();
+    void setup();
 public:
     static MultiOpRule* getInstance();
 };

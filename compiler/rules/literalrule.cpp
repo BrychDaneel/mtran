@@ -9,7 +9,7 @@
 LiteralRule* LiteralRule::instance;
 
 
-LiteralRule::LiteralRule()
+void LiteralRule::setup()
 {
     std::vector<Rule*> var;
     var.push_back(TerminalRule::getInstance(IntegerToken::TYPE));
@@ -32,6 +32,7 @@ LiteralRule *LiteralRule::getInstance()
 {
     if (instance == nullptr){
         instance = new LiteralRule;
+        instance->setup();
     }
     return instance;
 }

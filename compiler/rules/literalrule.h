@@ -6,7 +6,7 @@
 class LiteralRule : public BaseRule
 {
     static LiteralRule* instance;
-    LiteralRule();
+    void setup();
 public:
     static LiteralRule* getInstance();
 };

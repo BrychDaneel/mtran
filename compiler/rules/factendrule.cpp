@@ -7,7 +7,7 @@
 FactEndRule* FactEndRule::instance;
 
 
-FactEndRule::FactEndRule()
+void FactEndRule::setup()
 {
     std::vector<Rule*> var;
     var.push_back(EmptyRule::getInstance());
@@ -23,6 +23,7 @@ FactEndRule *FactEndRule::getInstance()
 {
     if (instance == nullptr){
         instance = new FactEndRule;
+        instance->setup();
     }
     return instance;
 }

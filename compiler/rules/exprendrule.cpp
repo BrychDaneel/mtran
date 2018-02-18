@@ -8,7 +8,7 @@
 ExprEndRule* ExprEndRule::instance;
 
 
-ExprEndRule::ExprEndRule()
+void ExprEndRule::setup()
 {
     std::vector<Rule*> var;
     var.push_back(EmptyRule::getInstance());
@@ -24,6 +24,7 @@ ExprEndRule *ExprEndRule::getInstance()
 {
     if (instance == nullptr){
         instance = new ExprEndRule;
+        instance->setup();
     }
     return instance;
 }

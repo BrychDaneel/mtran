@@ -6,7 +6,7 @@
 class IndexRule : public BaseRule
 {
     static IndexRule* instance;
-    IndexRule();
+    void setup();
 public:
     static IndexRule* getInstance();
 };

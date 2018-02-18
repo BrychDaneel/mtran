@@ -12,7 +12,7 @@
 VarRule* VarRule::instance;
 
 
-VarRule::VarRule()
+void VarRule::setup()
 {
     std::vector<Rule*> var;
     var.push_back(VarStartRule::getInstance());
@@ -34,6 +34,7 @@ VarRule *VarRule::getInstance()
 {
     if (instance == nullptr){
         instance = new VarRule;
+        instance->setup();
     }
     return instance;
 }

@@ -6,7 +6,7 @@
 class CallRule : public BaseRule
 {
     static CallRule* instance;
-    CallRule();
+    void setup();
 public:
     static CallRule* getInstance();
 };

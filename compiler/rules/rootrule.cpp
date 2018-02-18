@@ -7,7 +7,7 @@
 RootRule* RootRule::instance;
 
 
-RootRule::RootRule()
+void RootRule::setup()
 {
     std::vector<Rule*> var;
     var.push_back(ExprRule::getInstance());
@@ -19,6 +19,7 @@ RootRule *RootRule::getInstance()
 {
     if (instance == nullptr){
         instance = new RootRule;
+        instance->setup();
     }
     return instance;
 }

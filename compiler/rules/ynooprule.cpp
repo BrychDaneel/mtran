@@ -7,7 +7,7 @@
 YnoOpRule* YnoOpRule::instance;
 
 
-YnoOpRule::YnoOpRule()
+void YnoOpRule::setup()
 {
     std::vector<Rule*> var;
     var.push_back(TerminalRule::getInstance(SumToken::TYPE));
@@ -22,6 +22,7 @@ YnoOpRule *YnoOpRule::getInstance()
 {
     if (instance == nullptr){
         instance = new YnoOpRule;
+        instance->setup();
     }
     return instance;
 }

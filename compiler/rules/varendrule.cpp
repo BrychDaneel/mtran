@@ -7,7 +7,7 @@
 VarEndRule* VarEndRule::instance;
 
 
-VarEndRule::VarEndRule()
+void VarEndRule::setup()
 {
     std::vector<Rule*> var;
     var.push_back(EmptyRule::getInstance());
@@ -27,6 +27,7 @@ VarEndRule *VarEndRule::getInstance()
 {
     if (instance == nullptr){
         instance = new VarEndRule;
+        instance->setup();
     }
     return instance;
 }

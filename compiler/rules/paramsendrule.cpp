@@ -9,7 +9,7 @@
 ParamsEndRule* ParamsEndRule::instance;
 
 
-ParamsEndRule::ParamsEndRule()
+void ParamsEndRule::setup()
 {
     std::vector<Rule*> var;
     var.push_back(EmptyRule::getInstance());
@@ -26,6 +26,7 @@ ParamsEndRule *ParamsEndRule::getInstance()
 {
     if (instance == nullptr){
         instance = new ParamsEndRule;
+        instance->setup();
     }
     return instance;
 }

@@ -6,7 +6,7 @@
 class SumOpRule : public BaseRule
 {
     static SumOpRule* instance;
-    SumOpRule();
+    void setup();
 public:
     static SumOpRule* getInstance();
 };

@@ -7,7 +7,7 @@
 MultiOpRule* MultiOpRule::instance;
 
 
-MultiOpRule::MultiOpRule()
+void MultiOpRule::setup()
 {
     std::vector<Rule*> var;
     var.push_back(TerminalRule::getInstance(FactToken::TYPE));
@@ -26,6 +26,7 @@ MultiOpRule *MultiOpRule::getInstance()
 {
     if (instance == nullptr){
         instance = new MultiOpRule;
+        instance->setup();
     }
     return instance;
 }

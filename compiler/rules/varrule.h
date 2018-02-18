@@ -7,7 +7,7 @@
 class VarRule : public BaseRule
 {
     static VarRule* instance;
-    VarRule();
+    void setup();
 public:
     static VarRule* getInstance();
 };
