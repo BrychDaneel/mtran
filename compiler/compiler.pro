@@ -109,7 +109,11 @@ SOURCES += main.cpp \
     rules/dimendrule.cpp \
     rules/rangerule.cpp \
     rules/prognamerule.cpp \
-    rules/programrule.cpp
+    rules/programrule.cpp \
+    symboltable.cpp \
+    type.cpp \
+    basetype.cpp \
+    idinfo.cpp
 
 HEADERS += \
     codesource.h \
@@ -206,4 +210,8 @@ HEADERS += \
     rules/dimendrule.h \
     rules/rangerule.h \
     rules/prognamerule.h \
-    rules/programrule.h
+    rules/programrule.h \
+    symboltable.h \
+    type.h \
+    basetype.h \
+    idinfo.h

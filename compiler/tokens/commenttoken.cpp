@@ -2,7 +2,7 @@
 
 
 const int CommentToken::TYPE = 2;
-const std::string CommentToken::REGEX = "(\\/\\*(.|[\\n\\r])*?\\*\\/)|(\\/\\/.*)" ;
+const std::string CommentToken::REGEX = "(\\{(.|[\\n\\r])*?\\})|(\\/\\/.*)" ;
 const std::string CommentToken::NAME = "comment";
 
 

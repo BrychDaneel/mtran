@@ -12,7 +12,11 @@ class LexicalAnalizer
     CodeSource src;
     TokenFactory tokenFactory;
     std::string strings;
-    Token* current;
+    Token* current = nullptr;
+    Token* next = nullptr;
+
+    Token *getUsefullToken();
+    bool fix();
 
 public:
     LexicalAnalizer(const std::string filename);
