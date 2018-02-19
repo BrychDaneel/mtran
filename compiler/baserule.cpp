@@ -99,7 +99,7 @@ Node *BaseRule::parce(LexicalAnalizer *lex)
             way = emptyWay;
 
     if (way == -1){
-        std::cerr << "COMPILATION ERROR: Invalid token" << std::endl;
+        std::cerr << "COMPILATION ERROR: Invalid token:  " << lex->front()->getLexem() << std::endl;
         exit(1);
     }
 

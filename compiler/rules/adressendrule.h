@@ -1,11 +1,14 @@
 #ifndef ADRESSENDRULE_H
 #define ADRESSENDRULE_H
 
+#include <baserule.h>
 
-class AdressEndRule
+class AdressEndRule : public BaseRule
 {
+    static AdressEndRule* instance;
+    void setup();
 public:
-    AdressEndRule();
+    static AdressEndRule* getInstance();
 };
 
 #endif // ADRESSENDRULE_H

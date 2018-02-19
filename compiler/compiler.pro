@@ -82,9 +82,23 @@ SOURCES += main.cpp \
     rules/exprstartrule.cpp \
     rules/exprendrule.cpp \
     nodes/emptynode.cpp \
-    rules/adressrule.cpp \
     rules/adressendrule.cpp \
-    rules/assignrule.cpp
+    rules/assignrule.cpp \
+    rules/instrrule.cpp \
+    rules/instrlistrule.cpp \
+    rules/blockrule.cpp \
+    rules/forrule.cpp \
+    rules/whilerule.cpp \
+    rules/repeatrule.cpp \
+    rules/ifrule.cpp \
+    rules/ifendrule.cpp \
+    rules/idinstrrule.cpp \
+    rules/idinstrendrule.cpp \
+    rules/instrlistendrule.cpp \
+    rules/defsrule.cpp \
+    rules/varblockrule.cpp \
+    rules/functionrule.cpp \
+    rules/procedurerule.cpp
 
 HEADERS += \
     codesource.h \
@@ -154,6 +168,20 @@ HEADERS += \
     rules/exprstartrule.h \
     rules/exprendrule.h \
     nodes/emptynode.h \
-    rules/adressrule.h \
     rules/adressendrule.h \
-    rules/assignrule.h
+    rules/assignrule.h \
+    rules/instrrule.h \
+    rules/instrlistrule.h \
+    rules/blockrule.h \
+    rules/forrule.h \
+    rules/whilerule.h \
+    rules/repeatrule.h \
+    rules/ifrule.h \
+    rules/ifendrule.h \
+    rules/idinstrrule.h \
+    rules/idinstrendrule.h \
+    rules/instrlistendrule.h \
+    rules/defsrule.h \
+    rules/varblockrule.h \
+    rules/functionrule.h \
+    rules/procedurerule.h
