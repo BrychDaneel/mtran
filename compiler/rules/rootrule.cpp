@@ -1,7 +1,7 @@
 #include "rootrule.h"
 #include <tokens/endtoken.h>
 
-#include <rules/blockrule.h>
+#include <rules/programrule.h>
 #include <rules/terminalrule.h>
 
 RootRule* RootRule::instance;
@@ -10,7 +10,7 @@ RootRule* RootRule::instance;
 void RootRule::setup()
 {
     std::vector<Rule*> var;
-    var.push_back(BlockRule::getInstance());
+    var.push_back(ProgramRule::getInstance());
     var.push_back(TerminalRule::getInstance(EndToken::TYPE));
     vars.push_back(var);
 }

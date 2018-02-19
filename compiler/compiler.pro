@@ -98,7 +98,18 @@ SOURCES += main.cpp \
     rules/defsrule.cpp \
     rules/varblockrule.cpp \
     rules/functionrule.cpp \
-    rules/procedurerule.cpp
+    rules/procedurerule.cpp \
+    rules/varbodyrule.cpp \
+    rules/idlistrule.cpp \
+    rules/idlistendrule.cpp \
+    rules/sigrule.cpp \
+    rules/sigendrule.cpp \
+    rules/typerule.cpp \
+    rules/dimrule.cpp \
+    rules/dimendrule.cpp \
+    rules/rangerule.cpp \
+    rules/prognamerule.cpp \
+    rules/programrule.cpp
 
 HEADERS += \
     codesource.h \
@@ -184,4 +195,15 @@ HEADERS += \
     rules/defsrule.h \
     rules/varblockrule.h \
     rules/functionrule.h \
-    rules/procedurerule.h
+    rules/procedurerule.h \
+    rules/varbodyrule.h \
+    rules/idlistrule.h \
+    rules/idlistendrule.h \
+    rules/sigrule.h \
+    rules/sigendrule.h \
+    rules/typerule.h \
+    rules/dimrule.h \
+    rules/dimendrule.h \
+    rules/rangerule.h \
+    rules/prognamerule.h \
+    rules/programrule.h

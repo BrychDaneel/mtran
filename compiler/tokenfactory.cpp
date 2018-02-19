@@ -69,8 +69,8 @@ TokenFactory::TokenFactory()
 
     reg(RealToken::REGEX, &RealToken::create);
     reg(IntegerToken::REGEX, &IntegerToken::create);
-    reg(StringToken::REGEX, &StringToken::create);
     reg(CharToken::REGEX, &CharToken::create);
+    reg(StringToken::REGEX, &StringToken::create);
 
     reg(AdressToken::REGEX, &AdressToken::create);
     reg(AssignToken::REGEX, &AssignToken::create);

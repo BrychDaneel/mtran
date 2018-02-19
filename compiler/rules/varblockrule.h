@@ -2,10 +2,15 @@
 #define VARBLOCKRULE_H
 
 
-class VarBlockRule
+#include <baserule.h>
+
+
+class VarBlockRule : public BaseRule
 {
+    static VarBlockRule* instance;
+    void setup();
 public:
-    VarBlockRule();
+    static VarBlockRule* getInstance();
 };
 
 #endif // VARBLOCKRULE_H

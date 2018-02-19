@@ -2,10 +2,14 @@
 #define PROCEDURERULE_H
 
 
-class ProcedureRule
+#include <baserule.h>
+
+class ProcedureRule : public BaseRule
 {
+    static ProcedureRule* instance;
+    void setup();
 public:
-    ProcedureRule();
+    static ProcedureRule* getInstance();
 };
 
 #endif // PROCEDURERULE_H

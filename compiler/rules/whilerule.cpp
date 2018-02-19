@@ -12,7 +12,7 @@ void WhileRule::setup()
 {
     std::vector<Rule*> var;
     var.push_back(TerminalRule::getInstance(KeywordsFactory::getId("while")));
-    var.push_back(BlockRule::getInstance());
+    var.push_back(ExprRule::getInstance());
     var.push_back(TerminalRule::getInstance(KeywordsFactory::getId("do")));
     var.push_back(BlockRule::getInstance());
     vars.push_back(var);

@@ -2,7 +2,7 @@
 
 
 const int CharToken::TYPE = 403;
-const std::string CharToken::REGEX = "'.'" ;
+const std::string CharToken::REGEX = "'.?'" ;
 const std::string CharToken::NAME = "char";
 
 

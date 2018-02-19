@@ -2,10 +2,15 @@
 #define FUNCTIONRULE_H
 
 
-class FunctionRule
+#include <baserule.h>
+
+class FunctionRule : public BaseRule
 {
+    static FunctionRule* instance;
+    void setup();
 public:
-    FunctionRule();
+    static FunctionRule* getInstance();
 };
+
 
 #endif // FUNCTIONRULE_H

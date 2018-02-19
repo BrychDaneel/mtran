@@ -2,10 +2,14 @@
 #define DEFSRULE_H
 
 
-class DefsRule
+#include <baserule.h>
+
+class DefsRule : public BaseRule
 {
+    static DefsRule* instance;
+    void setup();
 public:
-    DefsRule();
+    static DefsRule* getInstance();
 };
 
 #endif // DEFSRULE_H

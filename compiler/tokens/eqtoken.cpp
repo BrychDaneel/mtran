@@ -2,7 +2,7 @@
 #include <iostream>
 
 const int EQToken::TYPE = 308;
-const std::string EQToken::REGEX = "=|<>|>=|<=|>|<" ;
+const std::string EQToken::REGEX = "=|(<>)|(>=)|(<=)|>|<" ;
 const std::string EQToken::NAME = "eq";
 
 
