@@ -9,6 +9,7 @@ class DimEndRule : public BaseRule
     void setup();
 public:
     static DimEndRule* getInstance();
+    Node* getEmptyNode(SymbolTable* symbolTable, int way);
 };
 
 

@@ -27,7 +27,7 @@ protected:
 
 public:
     static Rule* getInstance();
-    virtual Node* getEmptyNode(int way);
+    virtual Node* getEmptyNode(SymbolTable* symbolTable, int way);
     std::set<int> getFirst();
     std::set<int> getFollow();
     Node* parce(LexicalAnalizer* lex);

@@ -11,6 +11,7 @@ class ExprEndRule : public BaseRule
     void setup();
 public:
     static ExprEndRule* getInstance();
+    Node* getEmptyNode(SymbolTable* symbolTable, int way);
 };
 
 #endif // EXPRENDRULE_H

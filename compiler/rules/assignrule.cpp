@@ -5,6 +5,8 @@
 #include <rules/exprrule.h>
 #include <tokens/assigntoken.h>
 
+#include <nodes/assignnode.h>
+
 AssignRule* AssignRule::instance;
 
 
@@ -23,4 +25,9 @@ AssignRule *AssignRule::getInstance()
         instance->setup();
     }
     return instance;
+}
+
+Node *AssignRule::getEmptyNode(SymbolTable *symbolTable, int way)
+{
+    return new AssignNode(symbolTable, way);
 }

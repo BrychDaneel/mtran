@@ -9,6 +9,7 @@ class SumRule : public BaseRule
     void setup();
 public:
     static SumRule* getInstance();
+    Node* getEmptyNode(SymbolTable* symbolTable, int way) override;
 };
 
 #endif // SUMRULE_H

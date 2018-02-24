@@ -8,7 +8,7 @@ const std::string SpaceToken::NAME = "spaces";
 
 SpaceToken::SpaceToken(const std::string lexem)
 {
-    this->lexem = "<somespaces>";
+    this->lexem = lexem;
 }
 
 Token *SpaceToken::create(const std::string lexem)

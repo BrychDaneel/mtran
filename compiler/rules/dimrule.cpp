@@ -2,6 +2,7 @@
 
 #include <rules/rangerule.h>
 #include <rules/dimendrule.h>
+#include <nodes/dimnode.h>
 
 DimRule* DimRule::instance;
 
@@ -22,4 +23,9 @@ DimRule *DimRule::getInstance()
         instance->setup();
     }
     return instance;
+}
+
+Node *DimRule::getEmptyNode(SymbolTable *symbolTable, int way)
+{
+    return new DimNode(symbolTable, way, true);
 }

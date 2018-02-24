@@ -10,6 +10,7 @@ class IdListRule : public BaseRule
     void setup();
 public:
     static IdListRule* getInstance();
+    Node* getEmptyNode(SymbolTable* symbolTable, int way);
 };
 
 #endif // IDLISTRULE_H

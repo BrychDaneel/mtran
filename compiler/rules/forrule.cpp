@@ -9,6 +9,8 @@
 #include <tokens/idtoken.h>
 #include <rules/assignrule.h>
 
+#include <nodes/fornode.h>
+
 ForRule* ForRule::instance;
 
 
@@ -33,4 +35,9 @@ ForRule *ForRule::getInstance()
         instance->setup();
     }
     return instance;
+}
+
+Node *ForRule::getEmptyNode(SymbolTable *symbolTable, int way)
+{
+    return new ForNode(symbolTable, way);
 }

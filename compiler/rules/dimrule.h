@@ -10,6 +10,7 @@ class DimRule : public BaseRule
     void setup();
 public:
     static DimRule* getInstance();
+    Node* getEmptyNode(SymbolTable* symbolTable, int way);
 };
 
 #endif // DIMRULE_H

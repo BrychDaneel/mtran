@@ -10,6 +10,7 @@ class VarRule : public BaseRule
     void setup();
 public:
     static VarRule* getInstance();
+    Node* getEmptyNode(SymbolTable* symbolTable, int way);
 };
 
 #endif // VARRULE_H

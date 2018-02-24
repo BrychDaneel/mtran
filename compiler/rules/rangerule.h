@@ -10,5 +10,6 @@ class RangeRule : public BaseRule
     void setup();
 public:
     static RangeRule* getInstance();
+    Node* getEmptyNode(SymbolTable* symbolTable, int way);
 };
 #endif // RANGERULE_H

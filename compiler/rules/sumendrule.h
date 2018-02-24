@@ -11,6 +11,7 @@ class SumEndRule : public BaseRule
     void setup();
 public:
     static SumEndRule* getInstance();
+    Node* getEmptyNode(SymbolTable* symbolTable, int way) override;
 };
 
 #endif // SUMENDRULE_H

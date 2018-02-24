@@ -11,6 +11,7 @@ class WhileRule : public BaseRule
     void setup();
 public:
     static WhileRule* getInstance();
+    Node* getEmptyNode(SymbolTable* symbolTable, int way) override;
 };
 
 #endif // WHILERULE_H

@@ -5,6 +5,9 @@
 #include <tokens/realtoken.h>
 #include <tokens/chartoken.h>
 #include <tokens/stringtoken.h>
+#include <keywordsfactory.h>
+
+#include <nodes/literalnode.h>
 
 LiteralRule* LiteralRule::instance;
 
@@ -26,6 +29,14 @@ void LiteralRule::setup()
     var.clear();
     var.push_back(TerminalRule::getInstance(StringToken::TYPE));
     vars.push_back(var);
+
+    var.clear();
+    var.push_back(TerminalRule::getInstance(KeywordsFactory::getId("true")));
+    vars.push_back(var);
+
+    var.clear();
+    var.push_back(TerminalRule::getInstance(KeywordsFactory::getId("false")));
+    vars.push_back(var);
 }
 
 LiteralRule *LiteralRule::getInstance()
@@ -35,4 +46,9 @@ LiteralRule *LiteralRule::getInstance()
         instance->setup();
     }
     return instance;
+}
+
+Node* LiteralRule::getEmptyNode(SymbolTable* symbolTable, int way)
+{
+    return new LiteralNode(symbolTable, way);
 }

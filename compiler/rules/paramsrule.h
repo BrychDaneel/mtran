@@ -11,6 +11,7 @@ class ParamsRule : public BaseRule
     void setup();
 public:
     static ParamsRule* getInstance();
+    Node* getEmptyNode(SymbolTable* symbolTable, int way) override;
 };
 
 #endif // PARAMSRULE_H

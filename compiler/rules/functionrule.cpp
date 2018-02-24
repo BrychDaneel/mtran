@@ -10,6 +10,9 @@
 #include <tokens/colontoken.h>
 #include <tokens/semicolontoken.h>
 #include <tokens/idtoken.h>
+#include <rules/typerule.h>
+
+#include <nodes/functionnode.h>
 
 FunctionRule* FunctionRule::instance;
 
@@ -24,7 +27,7 @@ void FunctionRule::setup()
     var.push_back(TerminalRule::getInstance(RightBracketToken::TYPE));
 
     var.push_back(TerminalRule::getInstance(ColonToken::TYPE));
-    var.push_back(TerminalRule::getInstance(IdToken::TYPE));
+    var.push_back(TypeRule::getInstance());
     var.push_back(TerminalRule::getInstance(SemicolonToken::TYPE));
 
     var.push_back(DefsRule::getInstance());
@@ -43,4 +46,9 @@ FunctionRule *FunctionRule::getInstance()
         instance->setup();
     }
     return instance;
+}
+
+Node *FunctionRule::getEmptyNode(SymbolTable *symbolTable, int way)
+{
+    return new FunctionNode(symbolTable, way, false);
 }

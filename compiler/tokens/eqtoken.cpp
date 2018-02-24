@@ -31,3 +31,8 @@ Token *EQToken::create(const std::string lexem)
 {
     return new EQToken(lexem);
 }
+
+EQToken::SubType EQToken::getSubType()
+{
+    return subType;
+}

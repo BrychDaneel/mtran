@@ -3,6 +3,8 @@
 #include <rules/terminalrule.h>
 #include <tokens/idtoken.h>
 
+#include <nodes/idnode.h>
+
 VarStartRule* VarStartRule::instance;
 
 
@@ -20,4 +22,9 @@ VarStartRule *VarStartRule::getInstance()
         instance->setup();
     }
     return instance;
+}
+
+Node *VarStartRule::getEmptyNode(SymbolTable *symbolTable, int way)
+{
+    return new IdNode(symbolTable, way);
 }

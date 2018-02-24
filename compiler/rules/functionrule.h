@@ -10,6 +10,7 @@ class FunctionRule : public BaseRule
     void setup();
 public:
     static FunctionRule* getInstance();
+    Node* getEmptyNode(SymbolTable* symbolTable, int way) override;
 };
 
 

@@ -5,17 +5,47 @@
 #include <tokens/semicolontoken.h>
 #include <keywordsfactory.h>
 
+#include <tokens/idtoken.h>
+#include <tokens/invalidtoken.h>
+
+#include <iostream>
+
+Token *LexicalAnalizer::getAnyToken()
+{
+    if (lastAnyToken != nullptr)
+        for (char c : lastAnyToken->getLexem())
+            if (c == '\n'){
+                nextLine++;
+                nextPosition = 1;
+            } else
+                if (c != '\r')
+                    nextPosition++;
+    lastAnyToken = tokenFactory.getToken(strings);
+    lastAnyToken->setLine(nextLine);
+    lastAnyToken->setPos(nextPosition);
+    return lastAnyToken;
+}
 
 Token* LexicalAnalizer::getUsefullToken()
 {
     Token* token;
-    do
-        token = tokenFactory.getToken(strings);
-    while (token->getType() == SpaceToken::TYPE || token->getType() == CommentToken::TYPE);
+    do{
+        token = getAnyToken();
+        if (token->getType() == InvalidToken::TYPE){
+            std::cerr << "LEXICAL ERROR ("<< nextLine << "," << nextPosition << ") Unknown token: " << token->getLexem() << std::endl;
+            exit(1);
+        }
+    }while (token->getType() == SpaceToken::TYPE || token->getType() == CommentToken::TYPE || token->getType()== InvalidToken::TYPE);
+
+    if (token->getType() ==  IdToken::TYPE){
+        IdToken* itok = dynamic_cast<IdToken*>(token);
+        itok->setGID(symbolTable.getGID(token->getLexem()));
+    }
+
     return token;
 }
 
-bool LexicalAnalizer::fix()
+void LexicalAnalizer::fix()
 {
     bool norm = false;
     while (!norm){
@@ -33,6 +63,9 @@ bool LexicalAnalizer::fix()
 
         if (current->getType() == SemicolonToken::TYPE  && next->getType() == KeywordsFactory::getId("end") ){
             current = next;
+            position = nextPosition;
+            line = nextLine;
+
             next = getUsefullToken();
             norm = false;
         }
@@ -47,7 +80,10 @@ LexicalAnalizer::LexicalAnalizer(const std::string filename)
 {
     strings = src.full();
     current = getUsefullToken();
+    position = nextPosition;
+    line = nextLine;
     next = getUsefullToken();
+    fix();
 }
 
 
@@ -56,6 +92,9 @@ Token *LexicalAnalizer::pop()
     Token* prev = current;
 
     current = next;
+    position = nextPosition;
+    line = nextLine;
+
     next = getUsefullToken();
 
     fix();
@@ -73,4 +112,19 @@ Token *LexicalAnalizer::front()
 bool LexicalAnalizer::finished()
 {
     return current->getType() == EndToken::TYPE;
+}
+
+SymbolTable *LexicalAnalizer::getSymbolTable()
+{
+    return &symbolTable;
+}
+
+int LexicalAnalizer::getLine()
+{
+    return line;
+}
+
+int LexicalAnalizer::getPosition()
+{
+    return position;
 }

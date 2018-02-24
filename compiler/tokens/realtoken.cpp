@@ -9,7 +9,7 @@ const std::string RealToken::NAME = "real";
 RealToken::RealToken(const std::string lexem)
 {
     this->lexem = lexem;
-    if (sscanf(lexem.c_str(), "%g", &value) != 1){
+    if (sscanf(lexem.c_str(), "%lg", &value) != 1){
         std::cerr << "Can't convert Real!" << std::endl;
         exit(1);
     }

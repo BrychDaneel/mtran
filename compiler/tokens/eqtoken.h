@@ -24,6 +24,8 @@ public:
     int getType() {return TYPE;}
     const std::string getRegex() {return REGEX;}
     const std::string getName() {return NAME;}
+
+    SubType getSubType();
 };
 
 #endif // NETOKEN_H

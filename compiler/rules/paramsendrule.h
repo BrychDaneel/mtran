@@ -9,6 +9,7 @@ class ParamsEndRule : public BaseRule
     void setup();
 public:
     static ParamsEndRule* getInstance();
+    Node* getEmptyNode(SymbolTable* symbolTable, int way) override;
 };
 
 #endif // PARAMSENDRULE_H

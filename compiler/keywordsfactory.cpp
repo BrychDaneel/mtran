@@ -9,13 +9,20 @@ std::vector<std::string> KeywordsFactory::keywords = {
     "else", "end", "for", "function", "if",
     "mod", "not",
     "of", "or", "procedure", "program", "repeat", //"string",
-    "then", "to", "until", "var", "while", "xor"};
+    "then", "to", "until", "var", "while", "xor",
+    "true", "false",
+    "break", "continue", "exit"
+};
 std::vector<int> KeywordsFactory::keywordsId =
-    {501, 502, 503, 504, 505, 506, 507, 508,
+    {
+    501, 502, 503, 504, 505, 506, 507, 508,
     509, 510, 511, 512, 513,
     514, 515,
     516, 517, 518, 519, 520, //521,
-    522, 523, 524, 525, 526, 527};
+    522, 523, 524, 525, 526, 527,
+    528, 529,
+    530, 531, 532
+    };
 
 bool KeywordsFactory::isKeyword(std::string id)
 {

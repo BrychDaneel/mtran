@@ -69,7 +69,6 @@ SOURCES += main.cpp \
     rules/indexrule.cpp \
     rules/callrule.cpp \
     rules/paramsrule.cpp \
-    rules/paramsstartrule.cpp \
     rules/paramsendrule.cpp \
     rules/operandrule.cpp \
     rules/factrule.cpp \
@@ -113,7 +112,35 @@ SOURCES += main.cpp \
     symboltable.cpp \
     type.cpp \
     basetype.cpp \
-    idinfo.cpp
+    idinfo.cpp \
+    nodes/literalnode.cpp \
+    nodes/varnode.cpp \
+    signature.cpp \
+    nodes/convertnode.cpp \
+    typeconvertor.cpp \
+    nodes/virtualexprnode.cpp \
+    tokens/invalidtoken.cpp \
+    nodes/idnode.cpp \
+    nodes/idlistnode.cpp \
+    nodes/rangenode.cpp \
+    nodes/dimnode.cpp \
+    nodes/definenode.cpp \
+    nodes/typenode.cpp \
+    nodes/unarnode.cpp \
+    nodes/binarnode.cpp \
+    nodes/emptyexprnode.cpp \
+    nodes/fornode.cpp \
+    nodes/ifnode.cpp \
+    nodes/repeatnode.cpp \
+    nodes/whilenode.cpp \
+    nodes/assignnode.cpp \
+    nodes/idinstrnode.cpp \
+    nodes/paramsnode.cpp \
+    nodes/callnode.cpp \
+    nodes/controlnode.cpp \
+    rules/controlrule.cpp \
+    nodes/functionnode.cpp \
+    nodes/signode.cpp
 
 HEADERS += \
     codesource.h \
@@ -170,7 +197,6 @@ HEADERS += \
     rules/indexrule.h \
     rules/callrule.h \
     rules/paramsrule.h \
-    rules/paramsstartrule.h \
     rules/paramsendrule.h \
     rules/operandrule.h \
     rules/factrule.h \
@@ -214,4 +240,32 @@ HEADERS += \
     symboltable.h \
     type.h \
     basetype.h \
-    idinfo.h
+    idinfo.h \
+    nodes/literalnode.h \
+    nodes/varnode.h \
+    signature.h \
+    nodes/convertnode.h \
+    typeconvertor.h \
+    nodes/virtualexprnode.h \
+    tokens/invalidtoken.h \
+    nodes/idnode.h \
+    nodes/idlistnode.h \
+    nodes/rangenode.h \
+    nodes/dimnode.h \
+    nodes/definenode.h \
+    nodes/typenode.h \
+    nodes/unarnode.h \
+    nodes/binarnode.h \
+    nodes/emptyexprnode.h \
+    nodes/fornode.h \
+    nodes/ifnode.h \
+    nodes/repeatnode.h \
+    nodes/whilenode.h \
+    nodes/assignnode.h \
+    nodes/idinstrnode.h \
+    nodes/paramsnode.h \
+    nodes/callnode.h \
+    nodes/controlnode.h \
+    rules/controlrule.h \
+    nodes/functionnode.h \
+    nodes/signode.h

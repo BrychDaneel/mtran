@@ -9,6 +9,7 @@ class VarStartRule : public BaseRule
     void setup();
 public:
     static VarStartRule* getInstance();
+    Node* getEmptyNode(SymbolTable* symbolTable, int way);
 };
 
 #endif // VARSTARTRULE_H

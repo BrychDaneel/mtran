@@ -11,6 +11,7 @@ class VarBodyRule : public BaseRule
     void setup();
 public:
     static VarBodyRule* getInstance();
+    Node* getEmptyNode(SymbolTable* symbolTable, int way);
 };
 
 

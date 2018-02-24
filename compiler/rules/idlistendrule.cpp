@@ -4,6 +4,7 @@
 #include <rules/terminalrule.h>
 #include <tokens/idtoken.h>
 #include <tokens/comatoken.h>
+#include <nodes/idlistnode.h>
 
 IdListEndRule* IdListEndRule::instance;
 
@@ -28,4 +29,9 @@ IdListEndRule *IdListEndRule::getInstance()
         instance->setup();
     }
     return instance;
+}
+
+Node *IdListEndRule::getEmptyNode(SymbolTable *symbolTable, int way)
+{
+    return new IdListNode(symbolTable, way, false);
 }

@@ -11,6 +11,8 @@
 #include <tokens/semicolontoken.h>
 #include <tokens/idtoken.h>
 
+#include <nodes/functionnode.h>
+
 ProcedureRule* ProcedureRule::instance;
 
 
@@ -41,4 +43,9 @@ ProcedureRule *ProcedureRule::getInstance()
         instance->setup();
     }
     return instance;
+}
+
+Node *ProcedureRule::getEmptyNode(SymbolTable *symbolTable, int way)
+{
+    return new FunctionNode(symbolTable, way, true);
 }

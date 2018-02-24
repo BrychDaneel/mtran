@@ -8,6 +8,8 @@
 #include <keywordsfactory.h>
 #include <rules/dimrule.h>
 
+#include <nodes/typenode.h>
+
 TypeRule* TypeRule::instance;
 
 
@@ -35,4 +37,9 @@ TypeRule *TypeRule::getInstance()
         instance->setup();
     }
     return instance;
+}
+
+Node *TypeRule::getEmptyNode(SymbolTable *symbolTable, int way)
+{
+    return new TypeNode(symbolTable, way);
 }

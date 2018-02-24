@@ -11,6 +11,7 @@ class TypeRule : public BaseRule
     void setup();
 public:
     static TypeRule* getInstance();
+    Node* getEmptyNode(SymbolTable* symbolTable, int way) override;
 };
 
 

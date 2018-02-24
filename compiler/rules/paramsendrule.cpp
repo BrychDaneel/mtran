@@ -6,6 +6,8 @@
 #include <rules/terminalrule.h>
 #include <rules/paramsrule.h>
 
+#include <nodes/paramsnode.h>
+
 ParamsEndRule* ParamsEndRule::instance;
 
 
@@ -29,4 +31,9 @@ ParamsEndRule *ParamsEndRule::getInstance()
         instance->setup();
     }
     return instance;
+}
+
+Node *ParamsEndRule::getEmptyNode(SymbolTable *symbolTable, int way)
+{
+    return new ParamsNode(symbolTable, way, true);
 }

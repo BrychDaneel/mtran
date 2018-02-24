@@ -9,6 +9,7 @@ class AssignRule : public BaseRule
     void setup();
 public:
     static AssignRule* getInstance();
+    Node* getEmptyNode(SymbolTable* symbolTable, int way);
 };
 
 #endif // ASSIGNRULE_H

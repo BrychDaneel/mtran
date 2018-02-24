@@ -9,6 +9,7 @@ class CallRule : public BaseRule
     void setup();
 public:
     static CallRule* getInstance();
+    Node* getEmptyNode(SymbolTable* symbolTable, int way);
 };
 
 #endif // CALLRULE_H

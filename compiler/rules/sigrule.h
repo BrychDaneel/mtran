@@ -11,6 +11,7 @@ class SigRule : public BaseRule
     void setup();
 public:
     static SigRule* getInstance();
+    Node* getEmptyNode(SymbolTable* symbolTable, int way) override;
 };
 
 

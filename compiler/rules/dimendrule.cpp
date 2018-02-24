@@ -5,6 +5,8 @@
 #include <tokens/comatoken.h>
 #include <rules/rangerule.h>
 
+#include <nodes/dimnode.h>
+
 DimEndRule* DimEndRule::instance;
 
 
@@ -29,4 +31,9 @@ DimEndRule *DimEndRule::getInstance()
         instance->setup();
     }
     return instance;
+}
+
+Node *DimEndRule::getEmptyNode(SymbolTable *symbolTable, int way)
+{
+    return new DimNode(symbolTable, way, false);
 }

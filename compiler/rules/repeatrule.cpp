@@ -5,6 +5,8 @@
 #include <rules/exprrule.h>
 #include <rules/instrlistrule.h>
 
+#include <nodes/repeatnode.h>
+
 RepeatRule* RepeatRule::instance;
 
 
@@ -25,4 +27,9 @@ RepeatRule *RepeatRule::getInstance()
         instance->setup();
     }
     return instance;
+}
+
+Node *RepeatRule::getEmptyNode(SymbolTable *symbolTable, int way)
+{
+    return new RepeatNode(symbolTable, way);
 }

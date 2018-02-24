@@ -11,6 +11,7 @@ class RepeatRule : public BaseRule
     void setup();
 public:
     static RepeatRule* getInstance();
+    Node* getEmptyNode(SymbolTable* symbolTable, int way) override;
 };
 
 #endif // REPEATRULE_H

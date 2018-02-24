@@ -9,6 +9,7 @@ class FactRule : public BaseRule
     void setup();
 public:
     static FactRule* getInstance();
+    Node* getEmptyNode(SymbolTable* symbolTable, int way) override;
 };
 
 #endif // FACTRULE_H

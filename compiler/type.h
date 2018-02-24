@@ -13,7 +13,7 @@ class Type
 
 public:
     Type(){}
-    Type(BaseType type, std::vector<int> start, std::vector<int> end);
+    Type(BaseType type, std::vector<int> start, std::vector<int> dim);
     Type(BaseType type);
     BaseType getBaseType();
     std::vector<int> getStart();

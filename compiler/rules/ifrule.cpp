@@ -6,6 +6,8 @@
 #include <rules/exprrule.h>
 #include <rules/ifendrule.h>
 
+#include <nodes/ifnode.h>
+
 IfRule* IfRule::instance;
 
 
@@ -27,4 +29,9 @@ IfRule *IfRule::getInstance()
         instance->setup();
     }
     return instance;
+}
+
+Node *IfRule::getEmptyNode(SymbolTable *symbolTable, int way)
+{
+    return new IfNode(symbolTable, way);
 }

@@ -9,6 +9,7 @@ class IdInstrEndRule : public BaseRule
     void setup();
 public:
     static IdInstrEndRule* getInstance();
+    Node* getEmptyNode(SymbolTable* symbolTable, int way) override;
 };
 
 #endif // IDINSTRRULESTART_H

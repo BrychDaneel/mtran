@@ -3,6 +3,7 @@
 #include <rules/terminalrule.h>
 #include <tokens/idtoken.h>
 #include <rules/idlistendrule.h>
+#include <nodes/idlistnode.h>
 
 IdListRule* IdListRule::instance;
 
@@ -22,4 +23,9 @@ IdListRule *IdListRule::getInstance()
         instance->setup();
     }
     return instance;
+}
+
+Node *IdListRule::getEmptyNode(SymbolTable *symbolTable, int way)
+{
+    return new IdListNode(symbolTable, way, true);
 }

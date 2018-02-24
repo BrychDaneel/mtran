@@ -3,6 +3,8 @@
 #include <rules/exprstartrule.h>
 #include <rules/exprendrule.h>
 
+#include <nodes/binarnode.h>
+
 ExprRule* ExprRule::instance;
 
 
@@ -21,5 +23,10 @@ ExprRule *ExprRule::getInstance()
         instance->setup();
     }
     return instance;
+}
+
+Node *ExprRule::getEmptyNode(SymbolTable *symbolTable, int way)
+{
+    return new BinarNode(symbolTable, way, true);
 }
 

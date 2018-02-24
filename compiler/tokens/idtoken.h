@@ -6,6 +6,9 @@
 
 class IdToken : public Token
 {
+    int gid = -1;
+    std::string lowerLexem;
+
 public:
     IdToken(const std::string lexem);
 
@@ -18,6 +21,11 @@ public:
     int getType() {return TYPE;}
     const std::string getRegex() {return REGEX;}
     const std::string getName() {return NAME;}
+
+    void setGID(int gid);
+    int getGID();
+
+    const std::string &getLowerLexem();
 };
 
 #endif // BEGINTOKEN_H

@@ -14,12 +14,12 @@ class EmptyRule : public BaseRule
     std::set<int> follow;
 public:
     static EmptyRule* getInstance();
-    Node* getEmptyNode(int way) {return new EmptyNode;}
+    Node* getEmptyNode(int /*way*/) {return new EmptyNode;}
     std::set<int> getFirst() {return first;}
     std::set<int> getFollow() {return follow;}
-    Node* parce(LexicalAnalizer* lex);
-    void build(int level = 0) {}
-    bool addFollow(int term) {}
+    Node* parce(LexicalAnalizer*);
+    void build(int /*level = 0*/) {}
+    bool addFollow(int /*term*/) { return false; }
 };
 
 #endif // EMPTYRULE_H

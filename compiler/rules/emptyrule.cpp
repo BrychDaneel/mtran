@@ -19,7 +19,7 @@ EmptyRule *EmptyRule::getInstance()
     return instance;
 }
 
-Node *EmptyRule::parce(LexicalAnalizer *lex)
+Node *EmptyRule::parce(LexicalAnalizer* /*lex*/)
 {
     return new EmptyNode();
 }

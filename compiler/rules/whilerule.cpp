@@ -5,6 +5,8 @@
 #include <rules/blockrule.h>
 #include <rules/exprrule.h>
 
+#include <nodes/whilenode.h>
+
 WhileRule* WhileRule::instance;
 
 
@@ -25,4 +27,9 @@ WhileRule *WhileRule::getInstance()
         instance->setup();
     }
     return instance;
+}
+
+Node *WhileRule::getEmptyNode(SymbolTable *symbolTable, int way)
+{
+    return new WhileNode(symbolTable, way);
 }

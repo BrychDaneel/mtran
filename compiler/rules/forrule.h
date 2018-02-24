@@ -10,6 +10,7 @@ class ForRule : public BaseRule
     void setup();
 public:
     static ForRule* getInstance();
+    Node* getEmptyNode(SymbolTable* symbolTable, int way);
 };
 
 #endif // FORRULE_H

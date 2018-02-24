@@ -5,6 +5,7 @@
 #include <rules/forrule.h>
 #include <rules/whilerule.h>
 #include <rules/repeatrule.h>
+#include <rules/controlrule.h>
 
 InstrRule* InstrRule::instance;
 
@@ -29,6 +30,10 @@ void InstrRule::setup()
 
     var.clear();
     var.push_back(RepeatRule::getInstance());
+    vars.push_back(var);
+
+    var.clear();
+    var.push_back(ControlRule::getInstance());
     vars.push_back(var);
 }
 

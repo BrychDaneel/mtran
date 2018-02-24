@@ -10,6 +10,7 @@ class SigEndRule : public BaseRule
     void setup();
 public:
     static SigEndRule* getInstance();
+    Node* getEmptyNode(SymbolTable* symbolTable, int way) override;
 };
 
 #endif // SIGENDRULE_H

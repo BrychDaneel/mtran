@@ -9,6 +9,8 @@
 #include <tokens/leftbrackettoken.h>
 #include <tokens/rightbrackettoken.h>
 
+#include <nodes/varnode.h>
+
 VarRule* VarRule::instance;
 
 
@@ -37,4 +39,9 @@ VarRule *VarRule::getInstance()
         instance->setup();
     }
     return instance;
+}
+
+Node *VarRule::getEmptyNode(SymbolTable* symbolTable, int way)
+{
+    return new VarNode(symbolTable, way);
 }

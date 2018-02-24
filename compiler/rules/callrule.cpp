@@ -5,6 +5,7 @@
 #include <tokens/rightbrackettoken.h>
 #include <rules/terminalrule.h>
 
+#include <nodes/callnode.h>
 
 CallRule* CallRule::instance;
 
@@ -25,4 +26,9 @@ CallRule *CallRule::getInstance()
         instance->setup();
     }
     return instance;
+}
+
+Node *CallRule::getEmptyNode(SymbolTable *symbolTable, int way)
+{
+    return new CallNode(symbolTable, way);
 }

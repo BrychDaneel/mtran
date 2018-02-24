@@ -4,6 +4,7 @@
 #include <tokens/dotdottoken.h>
 #include <tokens/integertoken.h>
 
+#include <nodes/rangenode.h>
 
 RangeRule* RangeRule::instance;
 
@@ -24,4 +25,9 @@ RangeRule *RangeRule::getInstance()
         instance->setup();
     }
     return instance;
+}
+
+Node *RangeRule::getEmptyNode(SymbolTable *symbolTable, int way)
+{
+    return new RangeNode(symbolTable, way);
 }

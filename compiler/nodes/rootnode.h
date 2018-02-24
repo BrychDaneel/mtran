@@ -6,7 +6,7 @@
 class RootNode : public BaseNode
 {
 public:
-    RootNode();
+    RootNode(SymbolTable *symbolTable);
     std::string getName() {return "RootNode";}
 };
 

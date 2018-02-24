@@ -3,6 +3,9 @@
 #include <rules/ynooprule.h>
 #include <rules/varrule.h>
 
+#include <nodes/emptyexprnode.h>
+#include <nodes/unarnode.h>
+
 OperandRule* OperandRule::instance;
 
 
@@ -25,4 +28,12 @@ OperandRule *OperandRule::getInstance()
         instance->setup();
     }
     return instance;
+}
+
+Node *OperandRule::getEmptyNode(SymbolTable *symbolTable, int way)
+{
+    if (way == 1)
+        return new EmptyExprNode(symbolTable, way);
+
+    return new UnarNode(symbolTable, way);
 }

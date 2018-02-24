@@ -10,6 +10,7 @@ class ProcedureRule : public BaseRule
     void setup();
 public:
     static ProcedureRule* getInstance();
+    Node* getEmptyNode(SymbolTable* symbolTable, int way) override;
 };
 
 #endif // PROCEDURERULE_H

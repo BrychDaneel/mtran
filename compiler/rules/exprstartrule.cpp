@@ -2,6 +2,8 @@
 
 #include <rules/sumrule.h>
 
+#include <nodes/emptyexprnode.h>
+
 ExprStartRule* ExprStartRule::instance;
 
 
@@ -19,4 +21,9 @@ ExprStartRule *ExprStartRule::getInstance()
         instance->setup();
     }
     return instance;
+}
+
+Node *ExprStartRule::getEmptyNode(SymbolTable *symbolTable, int way)
+{
+    return new EmptyExprNode(symbolTable, way);
 }

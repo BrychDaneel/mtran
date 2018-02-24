@@ -11,7 +11,7 @@ class RootRule : public BaseRule
     void setup();
 public:
     static RootRule* getInstance();
-    virtual Node* getEmptyNode(int way) {return new RootNode();}
+    virtual Node* getEmptyNode(SymbolTable* symbolTable, int /*way*/) {return new RootNode(symbolTable);}
 };
 
 #endif // ROOTRULE_H

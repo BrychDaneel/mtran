@@ -5,6 +5,8 @@
 #include <tokens/eqtoken.h>
 #include <rules/emptyrule.h>
 
+#include <nodes/binarnode.h>
+
 ExprEndRule* ExprEndRule::instance;
 
 
@@ -27,4 +29,9 @@ ExprEndRule *ExprEndRule::getInstance()
         instance->setup();
     }
     return instance;
+}
+
+Node *ExprEndRule::getEmptyNode(SymbolTable *symbolTable, int way)
+{
+    return new BinarNode(symbolTable, way, false);
 }

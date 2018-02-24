@@ -2,6 +2,9 @@
 
 #include <rules/operandrule.h>
 
+
+#include <nodes/emptyexprnode.h>
+
 FactStartRule* FactStartRule::instance;
 
 
@@ -19,4 +22,9 @@ FactStartRule *FactStartRule::getInstance()
         instance->setup();
     }
     return instance;
+}
+
+Node *FactStartRule::getEmptyNode(SymbolTable *symbolTable, int way)
+{
+    return new EmptyExprNode(symbolTable, way);
 }

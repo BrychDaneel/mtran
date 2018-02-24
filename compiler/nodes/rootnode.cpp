@@ -1,5 +1,6 @@
 #include "rootnode.h"
 
-RootNode::RootNode()
+RootNode::RootNode(SymbolTable* symbolTable)
+    : BaseNode(symbolTable, 0)
 {
 }

@@ -34,3 +34,4 @@ SumOpRule *SumOpRule::getInstance()
     }
     return instance;
 }
+

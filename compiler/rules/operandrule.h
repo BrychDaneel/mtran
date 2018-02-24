@@ -9,6 +9,7 @@ class OperandRule : public BaseRule
     void setup();
 public:
     static OperandRule* getInstance();
+    Node* getEmptyNode(SymbolTable *symbolTable, int way);
 };
 
 #endif // OPERANDRULE_H

@@ -3,6 +3,8 @@
 #include <rules/factstartrule.h>
 #include <rules/factendrule.h>
 
+#include <nodes/binarnode.h>
+
 FactRule* FactRule::instance;
 
 
@@ -21,4 +23,9 @@ FactRule *FactRule::getInstance()
         instance->setup();
     }
     return instance;
+}
+
+Node *FactRule::getEmptyNode(SymbolTable *symbolTable, int way)
+{
+    return new BinarNode(symbolTable, way, true);
 }

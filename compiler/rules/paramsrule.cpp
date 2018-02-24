@@ -1,8 +1,10 @@
 #include "paramsrule.h"
 
-#include <rules/paramsstartrule.h>
+#include <rules/exprrule.h>
 #include <rules/paramsendrule.h>
 #include <rules/emptyrule.h>
+
+#include <nodes/paramsnode.h>
 
 ParamsRule* ParamsRule::instance;
 
@@ -10,12 +12,13 @@ ParamsRule* ParamsRule::instance;
 void ParamsRule::setup()
 {
     std::vector<Rule*> var;
-    var.push_back(ParamsStartRule::getInstance());
-    var.push_back(ParamsEndRule::getInstance());
+    var.push_back(EmptyRule::getInstance());
     vars.push_back(var);
 
+
     var.clear();
-    var.push_back(EmptyRule::getInstance());
+    var.push_back(ExprRule::getInstance());
+    var.push_back(ParamsEndRule::getInstance());
     vars.push_back(var);
 }
 
@@ -26,4 +29,9 @@ ParamsRule *ParamsRule::getInstance()
         instance->setup();
     }
     return instance;
+}
+
+Node *ParamsRule::getEmptyNode(SymbolTable *symbolTable, int way)
+{
+    return new ParamsNode(symbolTable, way, false);
 }

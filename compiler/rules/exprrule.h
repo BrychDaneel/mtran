@@ -10,6 +10,7 @@ class ExprRule : public BaseRule
     void setup();
 public:
     static ExprRule* getInstance();
+    Node* getEmptyNode(SymbolTable* symbolTable, int way);
 };
 
 #endif // EXPRRULE_H

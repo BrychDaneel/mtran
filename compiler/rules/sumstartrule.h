@@ -11,6 +11,7 @@ class SumStartRule : public BaseRule
     void setup();
 public:
     static SumStartRule* getInstance();
+    Node* getEmptyNode(SymbolTable *symbolTable, int way);
 };
 
 #endif // SUMSTARTRULE_H

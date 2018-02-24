@@ -7,6 +7,8 @@
 #include <tokens/colontoken.h>
 #include <rules/typerule.h>
 
+#include <nodes/signode.h>
+
 SigEndRule* SigEndRule::instance;
 
 
@@ -32,4 +34,9 @@ SigEndRule *SigEndRule::getInstance()
         instance->setup();
     }
     return instance;
+}
+
+Node *SigEndRule::getEmptyNode(SymbolTable *symbolTable, int way)
+{
+    return new SigNode(symbolTable, way, false);
 }

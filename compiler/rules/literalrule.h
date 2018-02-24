@@ -9,6 +9,7 @@ class LiteralRule : public BaseRule
     void setup();
 public:
     static LiteralRule* getInstance();
+    Node* getEmptyNode(SymbolTable *symbolTable, int way);
 };
 
 #endif // LITERALRULE_H

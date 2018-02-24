@@ -32,6 +32,7 @@
 #include <tokens/sumtoken.h>
 #include <tokens/valuetoken.h>
 #include <tokens/ynartoken.h>
+#include <tokens/invalidtoken.h>
 
 
 void TokenFactory::reg(const std::string regex, Token* (*create)(const std::string))
@@ -94,5 +95,7 @@ TokenFactory::TokenFactory()
 
     reg(LeftSquarToken::REGEX, &LeftSquarToken::create);
     reg(RightSquarToken::REGEX, &RightSquarToken::create);
+
+    reg(InvalidToken::REGEX, &InvalidToken::create);
 
 }

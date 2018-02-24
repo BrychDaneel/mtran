@@ -10,6 +10,7 @@ class IfRule : public BaseRule
     void setup();
 public:
     static IfRule* getInstance();
+    Node* getEmptyNode(SymbolTable* symbolTable, int way) override;
 };
 
 #endif // IFRULE_H

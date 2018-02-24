@@ -3,6 +3,7 @@
 #include <rules/sumstartrule.h>
 #include <rules/sumendrule.h>
 
+#include <nodes/binarnode.h>
 
 SumRule* SumRule::instance;
 
@@ -22,4 +23,9 @@ SumRule *SumRule::getInstance()
         instance->setup();
     }
     return instance;
+}
+
+Node *SumRule::getEmptyNode(SymbolTable *symbolTable, int way)
+{
+    return new BinarNode(symbolTable, way, true);
 }

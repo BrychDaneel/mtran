@@ -4,6 +4,8 @@
 #include <rules/callrule.h>
 #include <rules/assignrule.h>
 
+#include <nodes/idinstrnode.h>
+
 IdInstrEndRule* IdInstrEndRule::instance;
 
 
@@ -26,4 +28,9 @@ IdInstrEndRule *IdInstrEndRule::getInstance()
         instance->setup();
     }
     return instance;
+}
+
+Node *IdInstrEndRule::getEmptyNode(SymbolTable *symbolTable, int way)
+{
+    return new IdInstrNode(symbolTable, way, false);
 }

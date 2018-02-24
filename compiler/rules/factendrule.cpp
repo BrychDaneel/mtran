@@ -4,6 +4,8 @@
 #include <rules/multioprule.h>
 #include <rules/factrule.h>
 
+#include <nodes/binarnode.h>
+
 FactEndRule* FactEndRule::instance;
 
 
@@ -26,4 +28,9 @@ FactEndRule *FactEndRule::getInstance()
         instance->setup();
     }
     return instance;
+}
+
+Node *FactEndRule::getEmptyNode(SymbolTable *symbolTable, int way)
+{
+    return new BinarNode(symbolTable, way, false);
 }

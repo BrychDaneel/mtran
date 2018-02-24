@@ -4,6 +4,8 @@
 #include <tokens/idtoken.h>
 #include <rules/idinstrendrule.h>
 
+#include <nodes/idinstrnode.h>
+
 IdInstrRule* IdInstrRule::instance;
 
 
@@ -22,4 +24,9 @@ IdInstrRule *IdInstrRule::getInstance()
         instance->setup();
     }
     return instance;
+}
+
+Node *IdInstrRule::getEmptyNode(SymbolTable *symbolTable, int way)
+{
+    return new IdInstrNode(symbolTable, way, true);
 }

@@ -9,8 +9,11 @@ class TerminalNode : public BaseNode
     Token* token;
 
 public:
-    TerminalNode(Token* token);
+    TerminalNode(SymbolTable *symbolTable, Token* token);
     void print(int level=0);
+    Token* getToken();
+    int getLine() override;
+    int getPos() override;
 };
 
 #endif // TERMINALNODE_H

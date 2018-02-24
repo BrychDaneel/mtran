@@ -19,3 +19,8 @@ Token *FactToken::create(const std::string lexem)
 {
     return new FactToken(lexem);
 }
+
+FactToken::SubType FactToken::getSubType()
+{
+    return subType;
+}

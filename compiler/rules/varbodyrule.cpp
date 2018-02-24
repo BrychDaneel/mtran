@@ -7,6 +7,8 @@
 #include <tokens/semicolontoken.h>
 #include <rules/typerule.h>
 
+#include <nodes/definenode.h>
+
 VarBodyRule* VarBodyRule::instance;
 
 
@@ -34,4 +36,9 @@ VarBodyRule *VarBodyRule::getInstance()
         instance->setup();
     }
     return instance;
+}
+
+Node *VarBodyRule::getEmptyNode(SymbolTable *symbolTable, int way)
+{
+    return new DefineNode(symbolTable, way);
 }

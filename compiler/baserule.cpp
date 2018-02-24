@@ -99,11 +99,11 @@ Node *BaseRule::parce(LexicalAnalizer *lex)
             way = emptyWay;
 
     if (way == -1){
-        std::cerr << "COMPILATION ERROR: Invalid token:  " << lex->front()->getLexem() << std::endl;
+        std::cerr << "COMPILATION ERROR(" << lex->getLine() << "," << lex->getPosition() << "): Invalid token:  " << lex->front()->getLexem() << std::endl;
         exit(1);
     }
 
-    Node* node = getEmptyNode(way);
+    Node* node = getEmptyNode(lex->getSymbolTable(), way);
 
     for (Rule* rule : vars[way])
         node->add(rule->parce(lex));
@@ -111,9 +111,9 @@ Node *BaseRule::parce(LexicalAnalizer *lex)
     return node;
 }
 
-Node *BaseRule::getEmptyNode(int way)
+Node *BaseRule::getEmptyNode(SymbolTable *symbolTable, int way)
 {
-    return new BaseNode(way);
+    return new BaseNode(symbolTable, way);
 }
 
 void BaseRule::build(int level)

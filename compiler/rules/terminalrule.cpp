@@ -22,9 +22,9 @@ Rule *TerminalRule::getInstance(int term)
 Node *TerminalRule::parce(LexicalAnalizer *lex)
 {
     if (lex->front()->getType() != term){
-        std::cerr << "COMPILATION ERROR: Invalid terminal. Expected: " << term << std::endl;
+        std::cerr << "COMPILATION ERROR(" << lex->getLine() << "," << lex->getPosition() << "): Invalid terminal. Expected: " << term << std::endl;
         exit(1);
     }
 
-    return new TerminalNode(lex->pop());
+    return new TerminalNode(lex->getSymbolTable(), lex->pop());
 }

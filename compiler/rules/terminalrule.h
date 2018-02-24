@@ -16,10 +16,10 @@ protected:
 
 public:
     static Rule* getInstance(int term);
-    void build(int level=0) {}
+    void build(int /*level=0*/) {}
     std::set<int> getFirst() {return first;}
     std::set<int> getFollow() {return follow;}
-    bool addFollow(int term) {return false;}
+    bool addFollow(int /*term*/) {return false;}
     Node* parce(LexicalAnalizer* lex);
 };
 

@@ -1,41 +1,47 @@
 #include "type.h"
 
 
-Type::Type(BaseType type, std::vector<int> start, std::vector<int> end)
+Type::Type(BaseType type, std::vector<int> start, std::vector<int> dim)
 {
     this->start = start;
     this->dim = dim;
     this->type = type;
 
-    int base_size;
+    size = 1;
 
     switch (type) {
     case BaseType::_boolean:
-        base_size = 1;
+        size = 1;
         break;
     case BaseType::_char:
-        base_size = 1;
+        size = 1;
         break;
     case BaseType::_string:
-        base_size = 256;
+        size = 32;
         break;
     case BaseType::_integer:
-        base_size = 4;
+        size = 1;
         break;
     case BaseType::_real:
-        base_size = 4;
+        size = 1;
         break;
+    case BaseType::_void:
+        size = 0;
     }
 
-    size = 1;
-    for (int i=0; i<start.size(); i++)
-        size *= end[i] - start[i];
+    for (unsigned int i=0; i<start.size(); i++)
+        size *= dim[i];
 }
 
 Type::Type(BaseType type)
     :Type(type, std::vector<int>(), std::vector<int>())
 {
 
+}
+
+BaseType Type::getBaseType()
+{
+    return type;
 }
 
 std::vector<int> Type::getStart()
@@ -46,5 +52,15 @@ std::vector<int> Type::getStart()
 std::vector<int> Type::getDim()
 {
     return dim;
+}
+
+int Type::getSize()
+{
+    return size;
+}
+
+bool Type::isSimple()
+{
+    return dim.size() == 0;
 }
 
