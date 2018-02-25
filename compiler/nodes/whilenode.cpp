@@ -17,5 +17,7 @@ void WhileNode::semantic()
         std::cerr << "SEMANTIC ERORR(" << getLine() << "," << getPos() << "): Condition must be boolean" << std::endl;
         exit(1);
     }
+    symbolTable->startLoop(0, 0, 0);
     nodes[3]->semantic();
+    symbolTable->endLoop();
 }

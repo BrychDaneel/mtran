@@ -38,7 +38,7 @@ void ControlNode::semantic()
         VirtualExprNode* expr = dynamic_cast<VirtualExprNode*>(nodes[2]);
         expr->semantic();
         Type commonType = TypeConvertor::getCommonType(type, expr->getType());
-        if ( TypeConvertor::isEqual(commonType, type) ){
+        if ( !TypeConvertor::isEqual(commonType, type) ){
             std::cerr << "SEMANTIC ERROR(" << getLine() << "," << getPos() << "): Invalid returned type" << std::endl;
             exit(1);
         }

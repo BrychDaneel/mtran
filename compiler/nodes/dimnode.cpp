@@ -35,7 +35,7 @@ void DimNode::semantic()
     for (int s : dimNode->getStart())
         start.push_back(s);
     for (int d : dimNode->getDimSize())
-        start.push_back(d);
+        dimSize.push_back(d);
 }
 
 std::vector<int> DimNode::getStart()

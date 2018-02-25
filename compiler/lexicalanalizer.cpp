@@ -61,7 +61,8 @@ void LexicalAnalizer::fix()
             norm = false;
         }
 
-        if (current->getType() == SemicolonToken::TYPE  && next->getType() == KeywordsFactory::getId("end") ){
+        if (current->getType() == SemicolonToken::TYPE  &&
+                (next->getType() == KeywordsFactory::getId("end") || next->getType() == KeywordsFactory::getId("until"))){
             current = next;
             position = nextPosition;
             line = nextLine;

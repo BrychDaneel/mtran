@@ -13,7 +13,7 @@ class SymbolTable
     int gid=0;
     std::map<std::string, int> globalMap;
     std::vector< std::vector<IdInfo> > vis;
-    std::vector< Type > retTypes;
+    std::vector< Type > retTypes = {BaseType::_integer};
     std::vector<int> top = {100};
     int visTop=0;
 
@@ -40,7 +40,7 @@ public:
     Signature* getSignatyre(int gid);
 
     void startLoop(int loopStart, int loopEnd, int loopContinue);
-    void EndLoop();
+    void endLoop();
     void getLoopInfo(int& loopStart, int& loopEnd, int& loopContinue);
 
 };

@@ -40,7 +40,7 @@ void IdInstrNode::semantic()
 
         IdInfo* idinf = symbolTable->getInfo(gid);
 
-        if (nodes[0]->getWay() != 0 && idinf->getType().isSimple()){
+        if (nodes[0]->getWay() != 0 && idinf->getType().isSimple() && idinf->getType().getBaseType() != BaseType::_string){
             std::cerr << "SEMANTIC ERROR(" << getLine() << "," << getPos() << "): It is not array" << std::endl;
             exit(1);
         }
@@ -52,13 +52,21 @@ void IdInstrNode::semantic()
 
         if (nodes[0]->getWay() != 0){
             std::vector<Type> types;
-            for (size_t i=0; i<idinf->getType().getDim().size(); i++)
+
+            if (idinf->getType().isSimple() && idinf->getType().getBaseType() == BaseType::_string)
                 types.push_back(BaseType::_integer);
+            else
+                for (size_t i=0; i<idinf->getType().getDim().size(); i++)
+                    types.push_back(BaseType::_integer);
             dynamic_cast<ParamsNode*>(nodes[0]->getNodes()[0]->getNodes()[1])->setTypes(types);
             nodes[0]->semantic();
         }
 
-        dynamic_cast<AssignNode*>(nodes[1])->setRequiredType(idinf->getType().getBaseType());
+        if (nodes[0]->getWay() != 0 && idinf->getType().isSimple() && idinf->getType().getBaseType() == BaseType::_string)
+            dynamic_cast<AssignNode*>(nodes[1])->setRequiredType(BaseType::_char);
+        else
+            dynamic_cast<AssignNode*>(nodes[1])->setRequiredType(idinf->getType().getBaseType());
+
         nodes[1]->semantic();
         return;
     }

@@ -140,7 +140,9 @@ SOURCES += main.cpp \
     nodes/controlnode.cpp \
     rules/controlrule.cpp \
     nodes/functionnode.cpp \
-    nodes/signode.cpp
+    nodes/signode.cpp \
+    funs/writefun.cpp \
+    fun.cpp
 
 HEADERS += \
     codesource.h \
@@ -268,4 +270,6 @@ HEADERS += \
     nodes/controlnode.h \
     rules/controlrule.h \
     nodes/functionnode.h \
-    nodes/signode.h
+    nodes/signode.h \
+    funs/writefun.h \
+    fun.h

@@ -20,7 +20,7 @@ void UnarNode::semantic()
     if (nodes[0]->getWay() == 1)
         subType = SubType::_not;
     else{
-        TerminalNode* node = dynamic_cast<TerminalNode*>(nodes[0]);
+        TerminalNode* node = dynamic_cast<TerminalNode*>(nodes[0]->getNodes()[0]);
         SumToken* token = dynamic_cast<SumToken*>(node->getToken());
         if (token->getSubType() == SumToken::SubType::minus)
             subType = SubType::_minus;

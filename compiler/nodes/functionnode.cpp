@@ -26,6 +26,7 @@ void FunctionNode::semantic()
     if (isProc)
         returnType = BaseType::_void;
     else{
+        nodes[6]->semantic();
         returnType = dynamic_cast<TypeNode*>(nodes[6])->getType();
         funDif = 2;
     }
@@ -34,6 +35,11 @@ void FunctionNode::semantic()
 
     symbolTable->addFunction(gid, sig);
     symbolTable->startFunction(returnType);
+
+    for (size_t i=0; i<sig.getParams().size(); i++)
+        symbolTable->define(paramsGID[i], sig.getParams()[i]);
+
+    symbolTable->define(gid, returnType);
 
     nodes[funDif + 6]->semantic();
     nodes[funDif + 8]->semantic();

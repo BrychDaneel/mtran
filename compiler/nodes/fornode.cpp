@@ -61,7 +61,9 @@ void ForNode::semantic()
         exit(1);
     }
 
+    symbolTable->startLoop(0, 0, 0);
     nodes[7]->semantic();
+    symbolTable->endLoop();
 
     return;
 }

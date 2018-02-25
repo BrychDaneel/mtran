@@ -21,6 +21,9 @@ void SigNode::semantic()
         st = 1;
 
 
+    nodes[st + 2]->semantic();
+    nodes[st + 0]->semantic();
+
     Type type = dynamic_cast<TypeNode*>(nodes[st + 2])->getType();
     for (int gid : dynamic_cast<IdListNode*>(nodes[st + 0])->getIdList()){
         idList.push_back(gid);

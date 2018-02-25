@@ -51,6 +51,7 @@ IdInfo *SymbolTable::getInfo(std::string id)
 void SymbolTable::startFunction(Type retType)
 {
     vis.push_back(std::vector<IdInfo>());
+    visTop++;
     retTypes.push_back(retType);
 }
 
@@ -63,16 +64,17 @@ void SymbolTable::endFunction()
     }
 
     retTypes.pop_back();
+    visTop --;
 }
 
 Type SymbolTable::getReturnType()
 {
-    return retTypes[retTypes.size()];
+    return retTypes[retTypes.size() - 1];
 }
 
 bool SymbolTable::isLocal()
 {
-    return retTypes.size() > 0;
+    return retTypes.size() > 1;
 }
 
 IdInfo* SymbolTable::define(int gid, Type type)
@@ -105,7 +107,7 @@ void SymbolTable::startLoop(int loopStart, int loopEnd, int loopContinue)
     loopsContinue.push_back(loopContinue);
 }
 
-void SymbolTable::EndLoop()
+void SymbolTable::endLoop()
 {
     loopsStart.pop_back();
     loopsEnd.pop_back();

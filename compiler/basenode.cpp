@@ -61,10 +61,27 @@ std::vector<Node *> BaseNode::getNodes()
 
 int BaseNode::getLine()
 {
-    return nodes[0]->getLine();
+    if (nodes.size() == 0)
+        return -1;
+    size_t i = 0;
+    int result = - 1;
+    do
+        result = nodes[i++]->getLine();
+    while (result == -1  && i<nodes.size());
+
+    return result;
 }
 
 int BaseNode::getPos()
 {
-    return nodes[0]->getPos();
+    if (nodes.size() == 0)
+        return -1;
+
+    size_t i = 0;
+    int result = -1;
+    do
+        result = nodes[i++]->getPos();
+    while (result == -1 && i<nodes.size());
+
+    return result;
 }
