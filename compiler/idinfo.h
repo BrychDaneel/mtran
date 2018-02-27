@@ -15,6 +15,7 @@ public:
     int getGId();
     Type getType();
     int getAdress();
+    void setAdress(int adress);
     bool isLocal();
 };
 

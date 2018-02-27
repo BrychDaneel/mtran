@@ -11,5 +11,6 @@ class ProgramRule : public BaseRule
     void setup();
 public:
     static ProgramRule* getInstance();
+    Node* getEmptyNode(SymbolTable* symbolTable, int way);
 };
 #endif // PROGRAMRULE_H

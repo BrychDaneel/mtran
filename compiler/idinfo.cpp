@@ -23,6 +23,11 @@ int IdInfo::getAdress()
     return adress;
 }
 
+void IdInfo::setAdress(int adress)
+{
+    this->adress = adress;
+}
+
 bool IdInfo::isLocal()
 {
     return local;

@@ -6,6 +6,7 @@
 #include <rules/emptyrule.h>
 
 #include <nodes/binarnode.h>
+#include <rules/exprrule.h>
 
 ExprEndRule* ExprEndRule::instance;
 
@@ -18,7 +19,7 @@ void ExprEndRule::setup()
 
     var.clear();
     var.push_back(TerminalRule::getInstance(EQToken::TYPE));
-    var.push_back(SumRule::getInstance());
+    var.push_back(ExprRule::getInstance());
     vars.push_back(var);
 }
 
@@ -33,5 +34,5 @@ ExprEndRule *ExprEndRule::getInstance()
 
 Node *ExprEndRule::getEmptyNode(SymbolTable *symbolTable, int way)
 {
-    return new BinarNode(symbolTable, way, false);
+    return new BinarNode(symbolTable, way, false, true);
 }

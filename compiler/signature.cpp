@@ -6,6 +6,7 @@ Signature::Signature(Type result, std::vector<Type> params)
     this->params = params;
     for (Type type : params)
         size += type.getSize();
+    size += result.getSize();
 }
 
 Signature::Signature(Type result)
@@ -29,6 +30,7 @@ void Signature::addParam(Type type)
 void Signature::setResult(Type type)
 {
     result = type;
+    size += type.getSize();
 }
 
 std::vector<Type> Signature::getParams()

@@ -19,7 +19,7 @@ public:
     void add(Node* node);
     void print(int level=0);
     void semantic();
-    std::string getCode();
+    std::string getCode() override;
     void emitCode(std::string c);
     std::string getName() {return "BaseNode";}
     SymbolTable* getSymbolTable();

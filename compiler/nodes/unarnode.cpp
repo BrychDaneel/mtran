@@ -5,6 +5,7 @@
 #include <typeconvertor.h>
 
 #include <iostream>
+#include <sstream>
 
 UnarNode::UnarNode(SymbolTable *symbolTable, int way)
     :VirtualExprNode(symbolTable, way)
@@ -49,4 +50,54 @@ void UnarNode::semantic()
 
     this->type = type;
 
+}
+
+std::string UnarNode::getCode()
+{
+    code = "";
+    std::stringstream buf;
+
+    VirtualExprNode* expr = dynamic_cast<VirtualExprNode*>(nodes[1]);
+    expr->setDist(dist, isLocal);
+    code = code + expr->getCode();
+
+    buf.str("");
+    if (isLocal)
+        buf << "$";
+    else
+        buf << "#";
+    buf << dist;
+
+    std::string sAdr = buf.str();
+
+    switch (type.getBaseType()) {
+    case BaseType::_integer:
+        switch (subType) {
+        case SubType::_minus :
+            emitCode("iminus " + sAdr);
+            break;
+        case SubType::_plus :
+            break;
+        case SubType::_not :
+            emitCode("inot " + sAdr);
+            break;
+        }
+        break;
+    case BaseType::_real:
+        switch (subType) {
+        case SubType::_minus :
+            emitCode("rminus " + sAdr);
+            break;
+        case SubType::_plus :
+            break;
+        }
+    case BaseType::_boolean:
+        switch (subType) {
+        case SubType::_not :
+            emitCode("bnot " + sAdr);
+            break;
+        }
+    }
+
+    return code;
 }

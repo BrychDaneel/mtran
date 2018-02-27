@@ -8,7 +8,7 @@ const std::string StringToken::NAME = "String";
 StringToken::StringToken(const std::string lexem)
 {
     this->lexem = lexem;
-    value = lexem.substr(0, lexem.size()-1);
+    value = lexem.substr(1, lexem.size()-2);
 }
 
 Token *StringToken::create(const std::string lexem)

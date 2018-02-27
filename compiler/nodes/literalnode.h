@@ -9,6 +9,7 @@ public:
     LiteralNode(SymbolTable *symbolTable, int way);
     std::string getName() {return "LiteralNode";}
     void semantic();
+    std::string getCode() override;
 };
 
 #endif // LITERALNODE_H

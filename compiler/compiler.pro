@@ -142,7 +142,15 @@ SOURCES += main.cpp \
     nodes/functionnode.cpp \
     nodes/signode.cpp \
     funs/writefun.cpp \
-    fun.cpp
+    fun.cpp \
+    funs/writelnfun.cpp \
+    nodes/indexnode.cpp \
+    nodes/programnode.cpp \
+    funs/readintfun.cpp \
+    funs/readrealfun.cpp \
+    funs/readcharfun.cpp \
+    funs/readstringfun.cpp \
+    errorlog.cpp
 
 HEADERS += \
     codesource.h \
@@ -272,4 +280,12 @@ HEADERS += \
     nodes/functionnode.h \
     nodes/signode.h \
     funs/writefun.h \
-    fun.h
+    fun.h \
+    funs/writelnfun.h \
+    nodes/indexnode.h \
+    nodes/programnode.h \
+    funs/readintfun.h \
+    funs/readrealfun.h \
+    funs/readcharfun.h \
+    funs/readstringfun.h \
+    errorlog.h

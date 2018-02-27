@@ -5,6 +5,7 @@
 #include <rules/blockrule.h>
 #include <rules/terminalrule.h>
 #include <tokens/dottoken.h>
+#include <nodes/programnode.h>
 
 ProgramRule* ProgramRule::instance;
 
@@ -26,4 +27,9 @@ ProgramRule *ProgramRule::getInstance()
         instance->setup();
     }
     return instance;
+}
+
+Node *ProgramRule::getEmptyNode(SymbolTable *symbolTable, int way)
+{
+    return new ProgramNode(symbolTable, way);
 }

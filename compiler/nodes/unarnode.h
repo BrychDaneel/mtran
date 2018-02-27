@@ -10,6 +10,7 @@ public:
     UnarNode(SymbolTable *symbolTable, int way);
     std::string getName() {return "CompareNode";}
     void semantic();
+    std::string getCode() override;
 };
 
 #endif // OPERANDNODE_H

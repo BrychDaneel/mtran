@@ -27,6 +27,6 @@ ExprRule *ExprRule::getInstance()
 
 Node *ExprRule::getEmptyNode(SymbolTable *symbolTable, int way)
 {
-    return new BinarNode(symbolTable, way, true);
+    return new BinarNode(symbolTable, way, true, true);
 }
 

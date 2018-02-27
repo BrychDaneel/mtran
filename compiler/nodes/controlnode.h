@@ -9,6 +9,7 @@ public:
     ControlNode(SymbolTable *symbolTable, int way);
     std::string getName() {return "ControlNode";}
     void semantic() override;
+    std::string getCode() override;
 };
 
 #endif // CONTROLNODE_H

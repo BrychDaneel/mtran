@@ -12,6 +12,8 @@
 
 #include <iostream>
 
+#include <sstream>
+
 BinarNode::OpType BinarNode::getOperationType()
 {
     TerminalNode* node = dynamic_cast<TerminalNode*>(nodes[0]);
@@ -69,10 +71,11 @@ BinarNode::OpType BinarNode::getOperationType()
     exit(1);
 }
 
-BinarNode::BinarNode(SymbolTable *symbolTable, int way, bool first)
+BinarNode::BinarNode(SymbolTable *symbolTable, int way, bool first, bool isEq)
     : VirtualExprNode(symbolTable, way)
 {
     this->first = first;
+    this->isEq = isEq;
 }
 
 void BinarNode::semantic()
@@ -118,6 +121,12 @@ void BinarNode::setLeftType(Type type)
     left = type;
 }
 
+void BinarNode::setLeftAdress(int adress, bool isLocal)
+{
+    this->leftAdress = adress;
+    this->isLeftLocal = isLocal;
+}
+
 void BinarNode::setLeftOpType(BinarNode::OpType opType)
 {
     this->opType = opType;
@@ -131,6 +140,321 @@ void BinarNode::setOperLine(int line)
 void BinarNode::setOperPos(int pos)
 {
     operPos = pos;
+}
+
+std::string BinarNode::getOpCode(int retAdress, int leftAdress, int rightAdress, Type type)
+{
+    std::stringstream buf;
+
+    if (type.getBaseType() == BaseType::_real)
+        switch (opType) {
+        case OpType::_plus:
+            buf << "radd";
+            break;
+        case OpType::_minus:
+            buf << "rsub";
+            break;
+        case OpType::_rdiv:
+            buf << "rdiv";
+            break;
+        case OpType::_mult:
+            buf << "rmull";
+            break;
+        case OpType::_ca:
+            buf << "rca";
+            break;
+        case OpType::_cb:
+            buf << "rcb";
+            break;
+        case OpType::_cae:
+            buf << "rcae";
+            break;
+        case OpType::_cbe:
+            buf << "rcbe";
+            break;
+        case OpType::_ce:
+            buf << "rce";
+            break;
+        case OpType::_cne:
+            buf << "rcne";
+            break;
+        }
+
+
+    if (type.getBaseType() == BaseType::_integer)
+        switch (opType) {
+        case OpType::_plus:
+            buf << "iadd";
+            break;
+        case OpType::_minus:
+            buf << "isub";
+            break;
+        case OpType::_div:
+            buf << "idiv";
+            break;
+        case OpType::_rdiv:
+            buf << "irdiv";
+            break;
+        case OpType::_mult:
+            buf << "imull";
+            break;
+        case OpType::_mod:
+            buf << "imod";
+            break;
+        case OpType::_ca:
+            buf << "ica";
+            break;
+        case OpType::_cb:
+            buf << "icb";
+            break;
+        case OpType::_cae:
+            buf << "icae";
+            break;
+        case OpType::_cbe:
+            buf << "icbe";
+            break;
+        case OpType::_ce:
+            buf << "ice";
+            break;
+        case OpType::_cne:
+            buf << "icne";
+            break;
+        case OpType::_and:
+            buf << "iand";
+            break;
+        case OpType::_or:
+            buf << "ior";
+            break;
+        case OpType::_xor:
+            buf << "ixor";
+            break;
+        }
+
+
+    if (type.getBaseType() == BaseType::_boolean)
+        switch (opType) {
+        case OpType::_and:
+            buf << "iand";
+            break;
+        case OpType::_or:
+            buf << "ior";
+            break;
+        case OpType::_xor:
+            buf << "ixor";
+            break;
+        case OpType::_ce:
+            buf << "ice";
+            break;
+        case OpType::_cne:
+            buf << "icne";
+            break;
+        }
+
+    if (type.getBaseType() == BaseType::_char)
+        switch (opType) {
+        case OpType::_ca:
+            buf << "ica";
+            break;
+        case OpType::_cb:
+            buf << "icb";
+            break;
+        case OpType::_cae:
+            buf << "icae";
+            break;
+        case OpType::_cbe:
+            buf << "icbe";
+            break;
+        case OpType::_ce:
+            buf << "ice";
+            break;
+        case OpType::_cne:
+            buf << "icne";
+            break;
+        case OpType::_plus:
+            buf << "cadd";
+            break;
+        }
+
+    if (type.getBaseType() == BaseType::_string)
+        switch (opType) {
+        case OpType::_ca:
+            buf << "sca";
+            break;
+        case OpType::_cb:
+            buf << "scb";
+            break;
+        case OpType::_cae:
+            buf << "scae";
+            break;
+        case OpType::_cbe:
+            buf << "scbe";
+            break;
+        case OpType::_ce:
+            buf << "sce";
+            break;
+        case OpType::_cne:
+            buf << "scne";
+            break;
+        case OpType::_plus:
+            buf << "sadd";
+            break;
+        }
+
+    buf << " $" << retAdress << " ";
+    buf << " $" << leftAdress << " ";
+    buf << " $" << rightAdress;
+    return buf.str();
+}
+
+std::string BinarNode::getCode()
+{
+    code = "";
+
+    BinarNode* rightNode = dynamic_cast<BinarNode*>(nodes[1]);
+    rightNode->setDist(dist, isLocal);
+
+    if (!first){
+        rightNode->setDist(dist, isLocal);
+        rightNode->setLeftAdress(leftAdress, isLeftLocal);
+        return rightNode->getCode();
+    }
+
+    VirtualExprNode* right = dynamic_cast<VirtualExprNode*>(nodes[0]);
+
+    if (!hasLeft && nodes[1]->getWay() == 0){
+        right->setDist(dist, isLocal);
+        return right->getCode();
+    }
+
+    Type rightType = right->getType();
+    int rightAdress;
+
+
+    std::stringstream buf;
+    if (hasLeft){
+        Type commonType = TypeConvertor::getCommonType(left, rightType);
+        Type retType = commonType;
+        if (opType == OpType::_ca || opType == OpType::_cb || opType == OpType::_cae ||
+                opType == OpType::_cbe || opType == OpType::_ce || opType == OpType::_cne)
+            retType = BaseType::_boolean;
+        if (retType.getBaseType() == BaseType::_char)
+            retType = BaseType::_string;
+
+        buf.str("");
+        buf << "push " << retType.getSize();
+        emitCode(buf.str());
+        int retAdress = symbolTable->getAdress();
+        symbolTable->push(retType.getSize());
+
+
+        buf.str("");
+        buf << "push " << commonType.getSize() * 2;
+        emitCode(buf.str());
+
+        int leftCommon = symbolTable->getAdress();
+        symbolTable->push(commonType.getSize());
+        int rightCommon = symbolTable->getAdress();
+        symbolTable->push(commonType.getSize());
+
+        buf.str("");
+        buf << "push " << rightType.getSize();
+        emitCode(buf.str());
+
+        rightAdress = symbolTable->getAdress();
+        symbolTable->push(rightType.getSize());
+        right->setDist(rightAdress, true);
+        code = code + right->getCode();
+
+        if (TypeConvertor::isEqual(commonType, left)){
+            buf.str("");
+            buf << "mov " << commonType.getSize() << " ";
+            buf << "$" << leftCommon << " ";
+            buf << "$" << leftAdress;
+            emitCode(buf.str());
+        } else
+            if (commonType.getBaseType() == BaseType::_real){
+                buf.str("");
+                buf << "conv_r ";
+                buf << "$" << leftCommon << " ";
+                buf << "$" << leftAdress;
+                emitCode(buf.str());
+            } else{
+                buf.str("");
+                buf << "conv_s ";
+                buf << "$" << leftCommon << " ";
+                buf << "$" << leftAdress;
+                emitCode(buf.str());
+            }
+
+        if (TypeConvertor::isEqual(commonType, rightType)){
+            buf.str("");
+            buf << "mov " << commonType.getSize() << " ";
+            buf << "$" << rightCommon << " ";
+            buf << "$" << rightAdress;
+            emitCode(buf.str());
+        } else
+            if (commonType.getBaseType() == BaseType::_real){
+                buf.str("");
+                buf << "conv_r ";
+                buf << "$" << rightCommon << " ";
+                buf << "$" << rightAdress;
+                emitCode(buf.str());
+            } else{
+                buf.str("");
+                buf << "conv_s ";
+                buf << "$" << rightCommon << " ";
+                buf << "$" << rightAdress;
+                emitCode(buf.str());
+            }
+
+        buf.str("");
+        buf << "pop " << rightType.getSize();
+        emitCode(buf.str());
+        symbolTable->pop(rightType.getSize());
+
+        emitCode(getOpCode(retAdress, leftCommon, rightCommon, commonType));
+
+        buf.str("");
+        buf << "pop " << commonType.getSize() * 2;
+        emitCode(buf.str());
+        symbolTable->pop(commonType.getSize() * 2);
+
+        rightAdress = retAdress;
+        rightType = retType;
+    } else {
+        buf.str("");
+        buf << "push " << rightType.getSize();
+        emitCode(buf.str());
+
+        rightAdress = symbolTable->getAdress();
+        symbolTable->push(rightType.getSize());
+        right->setDist(rightAdress, true);
+        code = code + right->getCode();
+    }
+
+    if (nodes[1]->getWay() != 0){
+        rightNode->setDist(dist, isLocal);
+        rightNode->setLeftAdress(rightAdress, true);
+        code = code + rightNode->getCode();
+    } else {
+        buf.str("");
+        buf << "mov ";
+        buf << rightType.getSize();
+        if (isLocal)
+            buf << "$";
+        else
+            buf << "#";
+        buf << dist << " ";
+        buf << "$" << rightAdress;
+        emitCode(buf.str());
+    }
+
+    buf.str("");
+    buf << "pop " << rightType.getSize();
+    emitCode(buf.str());
+    symbolTable->pop(rightType.getSize());
+
+    return code;
 }
 
 

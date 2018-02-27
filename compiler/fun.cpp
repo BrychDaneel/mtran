@@ -1,6 +1,6 @@
 #include "fun.h"
 
-Fun::Fun()
+Fun::Fun(SymbolTable *symbolTable)
 {
-
+    this->symbolTable = symbolTable;
 }

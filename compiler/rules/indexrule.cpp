@@ -4,6 +4,7 @@
 #include <tokens/leftsquartoken.h>
 #include <tokens/rightsquartoken.h>
 #include <rules/paramsrule.h>
+#include <nodes/indexnode.h>
 
 IndexRule* IndexRule::instance;
 
@@ -25,3 +26,9 @@ IndexRule *IndexRule::getInstance()
     }
     return instance;
 }
+
+Node *IndexRule::getEmptyNode(SymbolTable *symbolTable, int way)
+{
+    return new IndexNode(symbolTable, way);
+}
+

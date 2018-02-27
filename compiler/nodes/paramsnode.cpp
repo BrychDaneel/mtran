@@ -14,6 +14,31 @@ ParamsNode::ParamsNode(SymbolTable *symbolTable, int way, bool midle)
 
 void ParamsNode::semantic()
 {
+
+    if (buildIn){
+        if (way == 0)
+            return;
+
+        ParamsNode* paramsNode = dynamic_cast<ParamsNode*>(nodes[1]);
+        paramsNode->setBuildIn(true);
+
+        if (midle){
+            paramsNode->semantic();
+            types = paramsNode->getTypes();
+            return;
+        }
+
+        VirtualExprNode* exprNode = dynamic_cast<VirtualExprNode*>(nodes[0]);
+        exprNode->semantic();
+        types.push_back(exprNode->getType());
+
+        paramsNode->semantic();
+        for (Type type : paramsNode->getTypes())
+            types.push_back(type);
+
+        return;
+    }
+
     if (way == 0){
         if (types.size() == 0)
             return;
@@ -49,11 +74,56 @@ void ParamsNode::semantic()
 
     std::vector<Type> restTypes = types;
     restTypes.erase(restTypes.begin());
-    dynamic_cast<ParamsNode*>(nodes[1])->setTypes(restTypes);
+    ParamsNode* paramsNode = dynamic_cast<ParamsNode*>(nodes[1]);
+    paramsNode->setTypes(restTypes);
     nodes[1]->semantic();
 }
 
 void ParamsNode::setTypes(std::vector<Type> types)
 {
     this->types = types;
+}
+
+void ParamsNode::setBuildIn(bool isBuildIn)
+{
+    this->buildIn = isBuildIn;
+}
+
+std::vector<Type> ParamsNode::getTypes()
+{
+    return types;
+}
+
+void ParamsNode::setDistList(std::vector<int> distList, std::vector<bool> isLocalList)
+{
+    this->distList = distList;
+    this->isLocalList = isLocalList;
+}
+
+
+std::string ParamsNode::getCode()
+{
+    code = "";
+    if (way == 0)
+        return code;
+
+    ParamsNode* paramsNode = dynamic_cast<ParamsNode*>(nodes[1]);
+    if (midle){
+        paramsNode->setDistList(distList, isLocalList);
+        return paramsNode->getCode();
+    }
+
+    int dist = distList[0];
+    bool isLocal = isLocalList[0];
+    distList.erase(distList.begin());
+    paramsNode->setDistList(distList, isLocalList);
+
+    VirtualExprNode* exprNode = dynamic_cast<VirtualExprNode*>(nodes[0]);
+    exprNode->setDist(dist, isLocal);
+    code = code + exprNode->getCode();
+
+    paramsNode->setDistList(distList, isLocalList);
+    code = code + paramsNode->getCode();
+
+    return code;
 }

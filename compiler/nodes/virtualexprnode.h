@@ -8,9 +8,13 @@ class VirtualExprNode : public BaseNode
 {
 protected:
     Type type;
+    int dist;
+    bool isLocal;
 public:
     VirtualExprNode(SymbolTable* symbolTable, int way);
     virtual Type getType();
+    virtual void setDist(int dist, bool isLocal);
+    virtual std::string strAdress();
 };
 
 #endif // VIRTUALEXPRNODE_H

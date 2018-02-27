@@ -9,6 +9,7 @@ class IndexRule : public BaseRule
     void setup();
 public:
     static IndexRule* getInstance();
+    Node* getEmptyNode(SymbolTable *symbolTable, int way) override;
 };
 
 #endif // INDEXRULE_H

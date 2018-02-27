@@ -27,7 +27,7 @@ void DimNode::semantic()
     nodes[rangeIndex]->semantic();
     RangeNode* rangeNode = dynamic_cast<RangeNode*>(nodes[rangeIndex]);
     start.push_back(rangeNode->getStart());
-    dimSize.push_back(rangeNode->getEnd() - rangeNode->getStart());
+    dimSize.push_back(rangeNode->getEnd() - rangeNode->getStart() + 1);
 
 
     nodes[restIndex]->semantic();

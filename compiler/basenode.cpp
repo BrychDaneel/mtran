@@ -36,12 +36,14 @@ void BaseNode::semantic()
 std::string BaseNode::getCode()
 {
     code = "";
+    for (size_t i=0; i<nodes.size(); i++)
+        code = code + nodes[i]->getCode();
     return code;
 }
 
 void BaseNode::emitCode(std::string c)
 {
-    code = code + '\n' + c;
+    code = code + c + '\n';
 }
 
 SymbolTable *BaseNode::getSymbolTable()

@@ -5,6 +5,8 @@
 
 #include <iostream>
 
+#include <sstream>
+
 DefineNode::DefineNode(SymbolTable *symbolTable, int way)
     : BaseNode(symbolTable, way)
 {
@@ -20,8 +22,8 @@ void DefineNode::semantic()
     nodes[0]->semantic();
     nodes[2]->semantic();
 
-    std::vector<int> idList = dynamic_cast<IdListNode*>(nodes[0])->getIdList();
-    Type type = dynamic_cast<TypeNode*>(nodes[2])->getType();
+    idList = dynamic_cast<IdListNode*>(nodes[0])->getIdList();
+    type = dynamic_cast<TypeNode*>(nodes[2])->getType();
 
     for (int gid : idList)
         if (symbolTable->getInfo(gid) != nullptr &&
@@ -34,4 +36,22 @@ void DefineNode::semantic()
 
 
     nodes[4]->semantic();
+}
+
+std::string DefineNode::getCode()
+{
+    std::stringstream buf;
+    code = "";
+    for (int id : idList){
+        symbolTable->define(id, type);
+        buf.str("");
+        symbolTable->getInfo(id)->setAdress(symbolTable->getAdress());
+        symbolTable->push(type.getSize());
+        buf << "push " << type.getSize();
+        emitCode(buf.str());
+    }
+    if (nodes[4]->getWay() != 0)
+        code = code + nodes[4]->getCode();
+
+    return code;
 }
