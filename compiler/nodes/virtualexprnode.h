@@ -15,6 +15,7 @@ public:
     virtual Type getType();
     virtual void setDist(int dist, bool isLocal);
     virtual std::string strAdress();
+    virtual void printTypes(int level);
 };
 
 #endif // VIRTUALEXPRNODE_H

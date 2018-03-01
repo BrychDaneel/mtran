@@ -1,6 +1,7 @@
 #ifndef TYPE_H
 #define TYPE_H
 
+#include <string>
 #include <basetype.h>
 #include <vector>
 
@@ -20,6 +21,7 @@ public:
     std::vector<int> getDim();
     int getSize();
     bool isSimple();
+    std::string getStr();
 };
 
 #endif // TYPE_H

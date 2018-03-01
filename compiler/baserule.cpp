@@ -4,6 +4,9 @@
 #include <tokens/emptytoken.h>
 #include <token.h>
 
+#include <errorlog.h>
+#include <sstream>
+
 Rule* BaseRule::instance = nullptr;
 
 
@@ -84,24 +87,31 @@ Node *BaseRule::parce(LexicalAnalizer *lex)
         exit(1);
     }
 
-    Token* token = lex->front();
-    int term = token->getType();
+    int way;
+    do{
 
-    int way = -1;
-    for (size_t i=0; i<vars.size(); i++)
-        if (waysFirst[i].find(term) != waysFirst[i].end()){
-            way = i;
-            break;
+        Token* token = lex->front();
+        int term = token->getType();
+
+        way = -1;
+        for (size_t i=0; i<vars.size(); i++)
+            if (waysFirst[i].find(term) != waysFirst[i].end()){
+                way = i;
+                break;
+            }
+
+        if (way == -1)
+            if (emptyWay > -1 && follow.find(term) != follow.end())
+                way = emptyWay;
+
+        if (way == -1){
+            std::stringstream buf;
+            buf << "COMPILATION ERROR(" << lex->getLine() << "," << lex->getPosition() << "): Invalid token:  " << lex->front()->getLexem();
+            ErrorLog::SyntaxError(buf.str());
+            lex->pop();
         }
 
-    if (way == -1)
-        if (emptyWay > -1 && follow.find(term) != follow.end())
-            way = emptyWay;
-
-    if (way == -1){
-        std::cerr << "COMPILATION ERROR(" << lex->getLine() << "," << lex->getPosition() << "): Invalid token:  " << lex->front()->getLexem() << std::endl;
-        exit(1);
-    }
+    } while (way == -1);
 
     Node* node = getEmptyNode(lex->getSymbolTable(), way);
 

@@ -10,6 +10,9 @@
 
 #include <iostream>
 
+#include <errorlog.h>
+#include <sstream>
+
 Token *LexicalAnalizer::getAnyToken()
 {
     if (lastAnyToken != nullptr)
@@ -32,8 +35,9 @@ Token* LexicalAnalizer::getUsefullToken()
     do{
         token = getAnyToken();
         if (token->getType() == InvalidToken::TYPE){
-            std::cerr << "LEXICAL ERROR ("<< nextLine << "," << nextPosition << ") Unknown token: " << token->getLexem() << std::endl;
-            exit(1);
+            std::stringstream buf;
+            buf << "LEXICAL ERROR ("<< nextLine << "," << nextPosition << ") Unknown token: " << token->getLexem();
+            ErrorLog::LexicalError(buf.str());
         }
     }while (token->getType() == SpaceToken::TYPE || token->getType() == CommentToken::TYPE || token->getType()== InvalidToken::TYPE);
 

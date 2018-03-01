@@ -31,6 +31,11 @@ bool KeywordsFactory::isKeyword(std::string id)
     return std::find(keywords.begin(), keywords.end(), id) != keywords.end();
 }
 
+bool KeywordsFactory::isKeyword(int typeId)
+{
+    return std::find(keywordsId.begin(), keywordsId.end(), typeId) != keywordsId.end();
+}
+
 int KeywordsFactory::getId(std::string keyword)
 {
     std::transform(keyword.begin(), keyword.end(), keyword.begin(), tolower);
@@ -38,7 +43,7 @@ int KeywordsFactory::getId(std::string keyword)
         if (keywords[i] == keyword)
             return keywordsId[i];
 
-    std::cerr << "Can't find keywords" << std::endl;
+    std::cerr << "Can't find keyword" << std::endl;
     exit(1);
 }
 
@@ -47,4 +52,14 @@ Token *KeywordsFactory::createToken(std::string keyword)
     std::string lexem = keyword;
     std::transform(keyword.begin(), keyword.end(), keyword.begin(), tolower);
     return new KeyWordToken(lexem, keyword, getId(keyword));
+}
+
+std::string KeywordsFactory::getStr(int type)
+{
+    for (size_t i=0; i<keywords.size(); i++)
+        if (keywordsId[i] == type)
+            return keywords[i];
+
+    std::cerr << "Can't find keywords ID" << std::endl;
+    exit(1);
 }

@@ -6,6 +6,11 @@
 #include <pascalstring.h>
 #include <map>
 
+void help(const char * prog){
+    std::cerr << "Usage:" << std::endl;
+    std::cerr << "\t" << std::string(prog) << " program" << std::endl;
+}
+
 size_t parceAdress(std::vector<int64_t>& stack, std::string adress){
     std::stringstream s(adress);
 
@@ -42,7 +47,10 @@ size_t parceAdress(std::vector<int64_t>& stack, std::string adress){
 
 int main(int argc, char *argv[])
 {
-    const char* filename = "/home/daneel/prog/mtran/temp/prog.bytecode";
+    if (argc != 2)
+        help(argv[0]);
+
+    const char* filename = argv[1];
     std::ifstream in(filename);
     std::vector<std::string> lines;
     std::map<int, int> labels;

@@ -32,13 +32,13 @@ std::string WhileNode::getCode()
     int loopEnd = symbolTable->getLabel();
     int loopContinue = loopStart;
 
-    buf.str("");
-    buf << "label " << loopStart;
-    emitCode(buf.str());
-
     int exprAdress = symbolTable->getAdress();
     emitCode("push 1");
     symbolTable->push(1);
+
+    buf.str("");
+    buf << "label " << loopStart;
+    emitCode(buf.str());
 
     VirtualExprNode* expNode = dynamic_cast<VirtualExprNode*>(nodes[1]);
     expNode->setDist(exprAdress, true);

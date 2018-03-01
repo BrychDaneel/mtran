@@ -1,5 +1,6 @@
 #include "virtualexprnode.h"
 
+#include <iostream>
 #include <sstream>
 
 VirtualExprNode::VirtualExprNode(SymbolTable *symbolTable, int way)
@@ -30,4 +31,12 @@ std::string VirtualExprNode::strAdress()
     return buf.str();
 }
 
+void VirtualExprNode::printTypes(int level)
+{
+    for (int i=0; i<level*2; i++)
+        std::cout << " ";
+    std::cout << type.getStr() << std::endl;
 
+    for (Node* node : nodes)
+        node->printTypes(level + 1);
+}

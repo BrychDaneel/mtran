@@ -1,5 +1,6 @@
 #include "type.h"
 
+#include <sstream>
 
 Type::Type(BaseType type, std::vector<int> start, std::vector<int> dim)
 {
@@ -62,5 +63,41 @@ int Type::getSize()
 bool Type::isSimple()
 {
     return dim.size() == 0;
+}
+
+std::string Type::getStr()
+{
+    std::stringstream buf;
+    switch (type) {
+    case BaseType::_boolean:
+        buf << "boolean";
+        break;
+    case BaseType::_char:
+        buf << "char";
+        break;
+    case BaseType::_string:
+        buf << "string";
+        break;
+    case BaseType::_integer:
+        buf << "integer";
+        break;
+    case BaseType::_real:
+        buf << "real";
+        break;
+    case BaseType::_void:
+        buf << "void";
+    }
+    if (dim.size() > 0){
+        buf << "[";
+        for (size_t i=0; i<dim.size(); i++){
+            buf << start[i];
+            buf << "..";
+            buf << start[i] + dim[i];
+            if (i<dim.size()-1)
+                buf << ", ";
+        }
+        buf << "]";
+    }
+    return buf.str();
 }
 

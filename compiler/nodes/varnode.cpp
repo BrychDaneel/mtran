@@ -109,7 +109,6 @@ std::string VarNode::getCode()
     IdInfo* info;
     VirtualExprNode* exprNode;
     int adrAdr;
-    int strAdr;
 
     switch (subType) {
     case SubType::_literal:

@@ -27,6 +27,16 @@ void BaseNode::print(int level)
         node->print(level + 1);
 }
 
+void BaseNode::printTypes(int level)
+{
+    for (int i=0; i<level*2; i++)
+        std::cout << " ";
+    std::cout << getName() << std::endl;
+
+    for (Node* node : nodes)
+        node->printTypes(level + 1);
+}
+
 void BaseNode::semantic()
 {
     for (Node* node : nodes)

@@ -15,6 +15,11 @@ void TerminalNode::print(int level)
     std::cout << token->getLexem() << std::endl;
 }
 
+void TerminalNode::printTypes(int level)
+{
+    print(level);
+}
+
 Token *TerminalNode::getToken()
 {
     return token;

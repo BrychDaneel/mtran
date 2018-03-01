@@ -1,7 +1,9 @@
 #include "terminalrule.h"
 #include <iostream>
 #include <nodes/terminalnode.h>
-
+#include <sstream>
+#include <errorlog.h>
+#include <nodes/emptynode.h>
 
 std::map<int, TerminalRule*> TerminalRule::instance;
 
@@ -21,9 +23,12 @@ Rule *TerminalRule::getInstance(int term)
 
 Node *TerminalRule::parce(LexicalAnalizer *lex)
 {
+    std::stringstream buf;
     if (lex->front()->getType() != term){
-        std::cerr << "COMPILATION ERROR(" << lex->getLine() << "," << lex->getPosition() << "): Invalid terminal. Expected: " << term << std::endl;
-        exit(1);
+        buf << "COMPILATION ERROR(" << lex->getLine() << "," << lex->getPosition() << "): Missed token: ";
+        buf << ErrorLog::getTokenStr(term);
+        ErrorLog::SyntaxError(buf.str());
+        return new EmptyNode;
     }
 
     return new TerminalNode(lex->getSymbolTable(), lex->pop());

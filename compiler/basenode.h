@@ -18,6 +18,7 @@ public:
     BaseNode(SymbolTable* symbolTable, int way);
     void add(Node* node);
     void print(int level=0);
+    void printTypes(int level=0) override;
     void semantic();
     std::string getCode() override;
     void emitCode(std::string c);
