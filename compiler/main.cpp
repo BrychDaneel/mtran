@@ -12,9 +12,11 @@ void help(const char* prog){
     exit(1);
 }
 
+
 int main(int argc, char* argv[])
 {
     bool showLex = false;
+    bool showSortedLex = false;
     bool showTree = false;
     bool showSem = false;
     bool showCode = false;
@@ -24,6 +26,8 @@ int main(int argc, char* argv[])
     for (int i=3; i<argc; i++)
         if (std::string(argv[i]) == "--lex")
             showLex = true;
+        else if (std::string(argv[i]) == "--slex")
+            showSortedLex = true;
         else if (std::string(argv[i]) == "--synt")
             showTree = true;
         else if (std::string(argv[i]) == "--sem")
@@ -46,6 +50,40 @@ int main(int argc, char* argv[])
         }
 
         std::cout << "EOF" << std::endl;
+    }
+
+    if (showSortedLex){
+        std::cout << std::left;
+        LexicalAnalizer lex(argv[1]);
+        std::vector<Token*> tokens;
+        while (lex.front()->getType() != EndToken::TYPE){
+            tokens.push_back(lex.front());
+            lex.pop();
+        }
+
+        for (size_t i=0; i<tokens.size(); i++)
+            for (size_t ii=i+1; ii<tokens.size(); ii++)
+                if (tokens[i]->getName() > tokens[ii]->getName())
+                    std::swap(tokens[i], tokens[ii]);
+
+        std::string lastName = "";
+        for (Token* token : tokens){
+            if (lastName != "")
+                if (lastName != token->getName())
+                    std::cout << std::endl;
+            lastName = token->getName();
+
+            std::cout << "(";
+            std::cout << std::setw(3) << token->getLine() << ", ";
+            std::cout << std::setw(3) << token->getPos() << ") ";
+
+            std::cout << std::setw(15) << token->getName();
+            std::cout << std::setw(15) << token->getLexem();
+            if (token->getType() == IdToken::TYPE)
+                std::cout << std::setw(15)<< dynamic_cast<IdToken*>(token)->getGID();
+            std::cout << std::endl;
+        }
+
     }
 
     SyntaxAnalizer syn(argv[1]);

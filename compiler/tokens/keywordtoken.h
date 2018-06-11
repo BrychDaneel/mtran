@@ -17,7 +17,7 @@ public:
 
     int getType() {return type;}
     const std::string getRegex() {return regex;}
-    const std::string getName() {return name;}
+    const std::string getName() {return "keyword";}
 };
 
 #endif // KEYWORDTOKEN_H
